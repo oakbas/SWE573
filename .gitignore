@@ -1,13 +1,10 @@
-
+#Target Folder
 target/
 
+#Project Files
 *iml
-
 *.jar
-
 .idea
 ProjectImplementation/ServerSide/mvnw
-
 ProjectImplementation/ServerSide/.mvn/wrapper/maven-wrapper.properties
-
 ProjectImplementation/ServerSide/mvnw.cmd
