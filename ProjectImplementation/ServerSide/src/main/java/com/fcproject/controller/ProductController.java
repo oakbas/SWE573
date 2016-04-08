@@ -19,7 +19,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping("/product")
+    @RequestMapping("/products")
     public Iterable<Product> listAllProducts() {
         return productService.listAllProducts();
     }
