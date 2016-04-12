@@ -16,7 +16,7 @@ public class ProducerController {
     private ProducerService producerService;
 
     @Autowired
-    public void setCommentService(ProducerService producerService) {
+    public void setProducerService(ProducerService producerService) {
         this.producerService = producerService;
     }
 

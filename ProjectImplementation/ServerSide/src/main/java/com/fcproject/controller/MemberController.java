@@ -15,7 +15,7 @@ public class MemberController {
     private MemberService memberService;
 
     @Autowired
-    public void setCommentService(MemberService memberService) {
+    public void setMemberService(MemberService memberService) {
         this.memberService = memberService;
     }
 
