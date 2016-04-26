@@ -1,9 +1,9 @@
 package com.fcproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by ozlemakbas on 05/04/16.
@@ -15,7 +15,21 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(nullable = false)
+    private String firstname;
+
+    @Column(nullable = false)
+    private String surname;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    private String bio;
+
+    private Date birthdate;
+
+    private String phone;
 }

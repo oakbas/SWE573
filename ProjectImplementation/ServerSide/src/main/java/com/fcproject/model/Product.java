@@ -1,9 +1,8 @@
 package com.fcproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import javax.persistence.*;
 
 /**
  * Created by ozlemakbas on 31/03/16.
@@ -14,7 +13,21 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(nullable = false)
+    private String productName;
+
+    @Column(nullable = false)
+    private String placeCome;
+
+    @Column(nullable = false)
+    private Integer price;
+
+    @Column(nullable = false)
+    private Float unit;
+
+    private Integer rate;
+
+    @ManyToOne(optional = false)
+    private UnitType unitType;
+
 }
