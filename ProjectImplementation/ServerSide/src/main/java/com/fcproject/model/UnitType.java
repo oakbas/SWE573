@@ -26,7 +26,5 @@ public class UnitType {
         return unitName;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
+    public List<Product> getProductList() { return productList; }
 }

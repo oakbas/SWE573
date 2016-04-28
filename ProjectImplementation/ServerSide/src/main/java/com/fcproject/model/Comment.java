@@ -1,9 +1,6 @@
 package com.fcproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ozlemakbas on 05/04/16.
@@ -15,7 +12,20 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(nullable = false)
+    private String body;
+
+    @ManyToOne()
+    private Product product;
+
+    @Column(nullable = false)
+    private String username;
+
+    public Integer getId() { return id; }
+
+    public String getBody() { return body; }
+
+    public Product getProduct() { return product; }
+
+    public String getUsername() { return username; }
 }

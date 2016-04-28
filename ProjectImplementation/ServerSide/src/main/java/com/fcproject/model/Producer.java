@@ -1,9 +1,7 @@
 package com.fcproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by ozlemakbas on 05/04/16.
@@ -15,7 +13,12 @@ public class Producer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @OneToMany (mappedBy = "producer")
+    private List<Product> productList;
+
     public Integer getId() {
         return id;
     }
+
+    public List<Product> getProduct() { return productList; }
 }

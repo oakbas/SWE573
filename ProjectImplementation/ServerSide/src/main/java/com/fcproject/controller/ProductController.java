@@ -21,9 +21,6 @@ public class ProductController {
 
     @RequestMapping("/products")
     public Iterable<Product> listAllProducts() {
-
         return productService.listAllProducts();
     }
-
-
 }
