@@ -1,0 +1,64 @@
+<h1>
+    <div>
+        <img src="img/logo-small.png">Bukoop'a Hosgeldin
+    </div>
+</h1>
+<div class="alert alert-info">
+    Kullanici Adi: test<br />
+    Parola: test
+</div>
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+
+<div class = "row">
+    <div class = "col-sm-8">
+        <div>
+            <span>
+                Son yıllarda, tükettiğimiz gıdanın içeriği, lezzeti, üretim ve dağıtımının çevreye ve toplumun geneline etkileri hakkındaki kaygılarımız giderek artıyor. Tüketiciler olarak, tarladan soframıza ulaşan gıdanın, yaşamın temeli olan toprak, gen ve su kaynaklarımızı ne şekillerde etkilediğini pek az biliyoruz. Ağır kimyasal girdiler kullanarak üretilen, genetiği değiştirilmiş organizmalar içeren, endüstriyel işlemden geçirilip sıhhi olmayan koşullarda saklanan gıdanın sağlığımıza sistematik etkilerine ilişkin bulgulara her gün bir yenisi ekleniyor. Üstelik gıdanın başta gelen üreticileri olan çiftçilerin, gıdanın taşınmasından ve işlenmesinden sorumlu olan emekçilerin, çalışmalarının karşılığında ödüllendirilmek yerine mağdur edildiklerini görüyoruz. Küçük çiftçilik yok oluyor, gıda ve tarıma şirketler egemen oluyor.
+            </span>
+        </div>
+        <div>
+            <span>
+                Sağlıklı, lezzetli, doğal çevreyi ve toplumu olumsuz olarak en az etkileyen gıdayı yaygınlaştırabilmek için onu tüketiciler açısından ulaşılabilir kılmak, titiz üreticilerle dikkatli tüketiciler arasında kalıcı işbirliği ve yardımlaşma inşa etmek gerekiyor.
+            </span>
+        </div>
+        <div>
+            <span>
+                Bu işbirliği ve yardımlaşmanın en pratik ve güncel araçlarından birisi, tüketici ve üretici kooperatifleri. Bu fikirden hareket eden bizler, Boğaziçi Mensupları Tüketim Kooperatifi’ni kurduk. Mayıs 2010’dan beri Boğaziçi Üniversitesi Kuzey Kampüs’te varolan  kooperatifimiz, zaman içerisinde ürün çeşitliliğini ve birlikte çalıştığı örgütlü üretici havuzunu genişletiyor  ve giderek artan sayıda doğayla dost tarım yapan üreticiyi Boğaziçi Üniversitesi mensubu tüketicilerle buluşturuyor.
+            </span>
+        </div>
+        <div>
+            <span>
+                Tüketiciler olarak tüm bu konularda bilgi ve farkındalığımız çok az. BÜKOOP olarak hem bu farkındalığı arttırmak hem de tüketiciler olarak iyi-adil gıdaya erişim sağlarken yarı-üretici konumunda gıda-tarım sisteminde yer almak için çalışıyoruz..
+            </span>
+        </div>
+    </div>
+    <div class = "col-sm-4">
+        <form name="form" ng-submit="login()" role="form">
+            <div class="form-group">
+                <label for="username">Kullanici Adi</label>
+                <i class="fa fa-key"></i>
+                <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Kullanici adi girmeniz gerekmektedir.</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Parola</label>
+                <i class="fa fa-lock"></i>
+                <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Parola girmeniz gerekmektedir.</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Giris</button>
+                <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+        <div>
+            <span>Sen de ailemize katil, hem uyelerle iletisime gec, hem de indirimlerden faydalan. </span>
+        </div>
+        <div>
+            <span><a href="#/registration">Uye Ol</a></span>
+        </div>
+        <div>
+            <span><a href="#/registration">Uye Olmadan Devam Et</a></span>
+        </div>
+    </div>
+</div>
