@@ -8,9 +8,13 @@
 angular.module('Authentication', []);
 angular.module('Home', []);
 angular.module('Registration', []);
+angular.module('Product', []);
+angular.module('Producers', []);
 
 angular.module('BasicHttpAuth', [
         'Authentication',
+        'Product',
+        'Producers',
         'Home',
         'Registration',
         'ngRoute',
@@ -33,6 +37,21 @@ angular.module('BasicHttpAuth', [
             .when('/registration', {
                 controller: 'RegistrationController',
                 templateUrl: 'modules/registration/views/registration.html'
+            })
+
+            .when('/products', {
+                controller: 'ProductController',
+                templateUrl: 'modules/product/views/products.html'
+            })
+
+            .when('/producer', {
+                controller: 'ProducerDescController',
+                templateUrl: 'modules/producers/views/producer.html'
+            })
+
+            .when('/producers', {
+                controller: 'ProducersController',
+                templateUrl: 'modules/producers/views/producers.html'
             })
 
             .otherwise({ redirectTo: '/login' });
@@ -62,9 +81,6 @@ angular.module('BasicHttpAuth', [
                     else if ($location.path() !== '/registration'){
                         $location.path('/login');
                     }
-                }
-                else {
-                    $location.path('/');
                 }
             });
         }]);

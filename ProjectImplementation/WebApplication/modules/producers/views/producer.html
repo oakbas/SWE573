@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Ureticiler
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h3>
+    {{data.producerInfo.producerName}}
+</h3>
+<div class = "row">
+    <div class = "col-sm-6">
+        <div>
+            <img src = "img/noimage.png"/>
+            <br>
+            <br>
+            <span>{{data.producerInfo.producerDesc}}</span>
+        </div>
+    </div>
+    <div class = "col-sm-1">
+    </div>
+    <div class = "col-sm-4">
+        <h4>
+            Iletisim Bilgileri
+        </h4>
+        <br>
+        <h5>
+            Harita
+        </h5>
+        <ng-map zoom="10" center="[37.17, 38.79]"></ng-map>
+        <br>
+        <h5>
+            Adres
+        </h5>
+        <span>{{data.producerInfo.producerAddress}}</span>
+    </div>
+</div>
+<br>
+<br>
+<div class = "row">
+    <div class = "col-sm-7">
+        <h4>
+            Urunler
+        </h4>
+    </div>
+</div>
+</body>
+</html>
