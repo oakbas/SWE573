@@ -16,13 +16,14 @@ angular.module('Registration')
                                     surname: $scope.surname,
                                     username: $scope.username,
                                     phone: $scope.phone,
-                                    birthdate:'1990-06-06',
+                                    email: $scope.emailAddress,
                                     bio: $scope.bio,
                                     password: $scope.bio
                                   }
-                    RegistrationService.submit(function (response, memberData) {
+                    RegistrationService.submit(memberData, function (response) {
                         if(response.status == '200') {
                             console.log("successful");
+                            $scope.dataLoading = false;
                         }
                         else{
                             console.log("something is wrong");

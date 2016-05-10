@@ -9,7 +9,7 @@ angular.module('Registration')
             function ($http, $cookieStore, $rootScope) {
                 var service = {};
 
-                service.submit = function (callback, memberOBject) {
+                service.submit = function (memberObject, callback) {
 
                     var postUrl = $rootScope.serverURL + "addMember"
                     var req = {
@@ -17,7 +17,7 @@ angular.module('Registration')
                         url: postUrl,
                         headers: { 'Content-Type': 'application/json'
                         },
-                        data: memberOBject
+                        data: memberObject
                     }
 
                     $http(req).then(function(response) {
