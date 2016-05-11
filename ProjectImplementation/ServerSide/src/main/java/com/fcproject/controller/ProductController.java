@@ -3,8 +3,12 @@ package com.fcproject.controller;
 import com.fcproject.model.Product;
 import com.fcproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * Created by ozlemakbas on 31/03/16.
@@ -22,5 +26,10 @@ public class ProductController {
     @RequestMapping("/products")
     public Iterable<Product> listAllProducts() {
         return productService.listAllProducts();
+    }
+
+    @RequestMapping(value = "/addproduct", method = RequestMethod.POST)
+    public void saveProduct(@Valid @RequestBody Product product) {
+        productService.saveProduct(product);
     }
 }

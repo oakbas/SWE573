@@ -1,14 +1,15 @@
+/**
+ * Created by ozlemakbas on 31/03/16.
+ */
 package com.fcproject.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by ozlemakbas on 31/03/16.
- */
 @Entity
 public class Product {
     @Id
@@ -21,6 +22,9 @@ public class Product {
     @Column(nullable = false)
     private Float unit;
 
+    @Column(nullable = false)
+    private Float unitAmount;
+
     private Integer rate;
 
     @Column(nullable = false)
@@ -29,13 +33,15 @@ public class Product {
     @Column(nullable = false)
     private String productFrom;
 
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false)
     private Producer producer;
 
-    @JsonIgnore
     @ManyToOne(optional = false)
     private UnitType unitType;
+
+    @ManyToOne(optional = false)
+    private PackagingType packagingType;
 
     @OneToMany(mappedBy = "product")
     private List<Comment> commentList;
@@ -50,9 +56,7 @@ public class Product {
         return price;
     }
 
-    public Float getUnit() {
-        return unit;
-    }
+    public Float getUnit() { return unit; }
 
     public Integer getRate() { return rate; }
 
@@ -67,4 +71,9 @@ public class Product {
     public Producer getProducer() { return producer; }
 
     public List<Comment> getCommentList() { return commentList; }
+
+    public Float getUnitAmount() { return unitAmount; }
+
+    public PackagingType getPackagingType() { return packagingType; }
+
 }
