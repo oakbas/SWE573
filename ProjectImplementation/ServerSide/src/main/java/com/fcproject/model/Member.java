@@ -1,6 +1,6 @@
 package com.fcproject.model;
+
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -19,15 +19,16 @@ public class Member {
     @Column(nullable = false)
     private String surname;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     private String bio;
-
-    private Date birthdate;
 
     private String phone;
 
@@ -51,16 +52,14 @@ public class Member {
         return username;
     }
 
+    public String getEmail() { return email; }
+
     public String getPassword() {
         return password;
     }
 
     public String getBio() {
         return bio;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
     }
 
     public String getPhone() {

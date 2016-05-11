@@ -29,7 +29,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/addMember", method = RequestMethod.POST)
-    public void saveMemberType(@Valid @RequestBody Member member) {
+    public void saveMember(@Valid @RequestBody Member member) {
         memberService.saveMember(member);
     }
 }
