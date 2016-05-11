@@ -1,3 +1,7 @@
+/**
+ * Created by ozlemakbas on 26/04/16.
+ */
+
 package com.fcproject.controller;
 
 import com.fcproject.model.UnitType;
@@ -7,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by ozlemakbas on 26/04/16.
- */
+
 
 @RestController
 public class UnittypeController {
@@ -22,8 +24,5 @@ public class UnittypeController {
     }
 
     @RequestMapping(value = "/unittypes", method = RequestMethod.GET)
-    public Iterable<UnitType> listAllUnittypes() {
-
-        return unittypeService.listAllUnittypes();
-    }
+    public Iterable<UnitType> listAllUnittypes() { return unittypeService.listAllUnittypes(); }
 }
