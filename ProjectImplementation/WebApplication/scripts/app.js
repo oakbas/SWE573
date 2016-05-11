@@ -10,13 +10,17 @@ angular.module('Home', []);
 angular.module('Registration', []);
 angular.module('Product', []);
 angular.module('Producers', []);
+angular.module('Stock', []);
+angular.module('Volunteer', []);
 
 angular.module('BasicHttpAuth', [
         'Authentication',
-        'Product',
-        'Producers',
         'Home',
         'Registration',
+        'Product',
+        'Producers',
+        'Stock',
+        'Volunteer',
         'ngRoute',
         'ngCookies'
     ])
@@ -41,7 +45,7 @@ angular.module('BasicHttpAuth', [
 
             .when('/products', {
                 controller: 'ProductController',
-                templateUrl: 'modules/product/views/products.html'
+                templateUrl: 'modules/product/views/volunteer.html'
             })
 
             .when('/producer', {
@@ -52,6 +56,16 @@ angular.module('BasicHttpAuth', [
             .when('/producers', {
                 controller: 'ProducersController',
                 templateUrl: 'modules/producers/views/producers.html'
+            })
+
+            .when('/stock', {
+                controller: 'StockController',
+                templateUrl: 'modules/stock/views/stock.html'
+            })
+
+            .when('/volunteer', {
+                controller: 'VolunteerController',
+                templateUrl: 'modules/volunteer/views/volunteer.html'
             })
 
             .otherwise({ redirectTo: '/login' });
