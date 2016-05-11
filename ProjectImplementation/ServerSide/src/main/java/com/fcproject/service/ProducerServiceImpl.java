@@ -1,6 +1,7 @@
 package com.fcproject.service;
 
 import com.fcproject.model.Producer;
+import com.fcproject.model.Product;
 import com.fcproject.repository.ProducerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,10 @@ public class ProducerServiceImpl implements ProducerService{
     @Override
     public Producer saveProducer(Producer producer) {
         return producerRepository.save(producer);
+    }
+
+    @Override
+    public Iterable<Product> listProductsByProducerId (Integer id) {
+        return producerRepository.findOne(id).getProductList();
     }
 }

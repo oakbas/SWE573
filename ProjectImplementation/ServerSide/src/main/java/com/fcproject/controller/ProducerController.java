@@ -1,6 +1,7 @@
 package com.fcproject.controller;
 
 import com.fcproject.model.Producer;
+import com.fcproject.model.Product;
 import com.fcproject.service.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,4 +34,10 @@ public class ProducerController {
         //Todo: Exception
         return producer;
     }
+
+    @RequestMapping(value = "/producerproducts/{producerId}", method = RequestMethod.GET)
+    public Iterable<Product> listProducerProductList (@PathVariable("producerId") int producerId) {
+        return producerService.listProductsByProducerId(producerId);
+    }
+
 }

@@ -37,8 +37,6 @@ public class Producer {
         return id;
     }
 
-    public List<Product> getProduct() { return productList; }
-
     public String getProducerName() { return producerName; }
 
     public String getProducerAddress() { return producerAddress; }

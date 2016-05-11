@@ -33,7 +33,6 @@ public class Product {
     @Column(nullable = false)
     private String productFrom;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false)
     private Producer producer;
 
