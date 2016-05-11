@@ -3,7 +3,9 @@ package com.fcproject.controller;
 import com.fcproject.model.Producer;
 import com.fcproject.service.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,8 +22,15 @@ public class ProducerController {
         this.producerService = producerService;
     }
 
-    @RequestMapping("/producers")
+    @RequestMapping(value = "/producers", method = RequestMethod.GET)
     public Iterable<Producer> listAllProducers() {
         return producerService.listAllProducers();
+    }
+
+    @RequestMapping(value = "/producers/{producerId}", method = RequestMethod.GET)
+    public Producer getProducer(@PathVariable("producerId") int producerId) {
+        Producer producer = producerService.getProducerById(producerId);
+        //Todo: Exception
+        return producer;
     }
 }

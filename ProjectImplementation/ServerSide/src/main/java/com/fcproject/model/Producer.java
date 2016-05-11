@@ -1,5 +1,8 @@
 package com.fcproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +16,20 @@ public class Producer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(nullable = false)
+    private String producerName;
+
+    @Column(nullable = false)
+    private String producerAddress;
+
+    @Column(nullable = false)
+    private String producerCity;
+
+    private String producerDesc;
+
+    private String producerPhone;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany (mappedBy = "producer")
     private List<Product> productList;
 
@@ -21,4 +38,16 @@ public class Producer {
     }
 
     public List<Product> getProduct() { return productList; }
+
+    public String getProducerName() { return producerName; }
+
+    public String getProducerAddress() { return producerAddress; }
+
+    public String getProducerCity() { return producerCity; }
+
+    public String getProducerDesc() { return producerDesc; }
+
+    public String getProducerPhone() { return producerPhone; }
+
+    public List<Product> getProductList() { return productList; }
 }
