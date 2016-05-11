@@ -11,7 +11,7 @@ angular.module('Volunteer')
             function ($scope, $location) {
 
                 $scope.openSellPage = function(){
-                    //$location.path('/');
+                    $location.path('/sell');
                 }
 
                 $scope.openStockPage = function(){

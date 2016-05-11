@@ -11,6 +11,7 @@ angular.module('Registration', []);
 angular.module('Product', []);
 angular.module('Producers', []);
 angular.module('Stock', []);
+angular.module('Sell', []);
 angular.module('Volunteer', []);
 
 angular.module('BasicHttpAuth', [
@@ -20,6 +21,7 @@ angular.module('BasicHttpAuth', [
         'Product',
         'Producers',
         'Stock',
+        'Sell',
         'Volunteer',
         'ngRoute',
         'ngCookies'
@@ -45,7 +47,7 @@ angular.module('BasicHttpAuth', [
 
             .when('/products', {
                 controller: 'ProductController',
-                templateUrl: 'modules/product/views/volunteer.html'
+                templateUrl: 'modules/product/views/products.html'
             })
 
             .when('/producer', {
@@ -61,6 +63,11 @@ angular.module('BasicHttpAuth', [
             .when('/stock', {
                 controller: 'StockController',
                 templateUrl: 'modules/stock/views/stock.html'
+            })
+
+            .when('/sell', {
+                controller: 'SellController',
+                templateUrl: 'modules/sell/views/sell.html'
             })
 
             .when('/volunteer', {
