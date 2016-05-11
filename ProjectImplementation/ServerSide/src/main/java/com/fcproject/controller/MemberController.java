@@ -3,10 +3,7 @@ package com.fcproject.controller;
 import com.fcproject.model.Member;
 import com.fcproject.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,5 +28,12 @@ public class MemberController {
     @RequestMapping(value = "/addMember", method = RequestMethod.POST)
     public void saveMember(@Valid @RequestBody Member member) {
         memberService.saveMember(member);
+    }
+
+    @RequestMapping(value = "/members/{memberId}", method = RequestMethod.GET)
+    public Member getMember(@PathVariable("memberId") int memberId) {
+        Member member = memberService.getMemberById(memberId);
+        //Todo: Exception
+        return member;
     }
 }
