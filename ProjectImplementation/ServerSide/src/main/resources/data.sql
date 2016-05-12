@@ -30,6 +30,8 @@ INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount
 
 INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount, packaging_type_id, price, rate, producer_id) VALUES ('kars gravyer peyniri','Kars',100, 1, 15, 4, 30, 4, 1);
 
-INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone) VALUES ('ali','demir','ademir', 'deneme', '123456', 'boun ogrenci', '05xx');
+INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, membership) VALUES ('ali','demir','ademir', 'deneme', '123456', 'boun ogrenci', '05xx', false);
+
+INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, membership) VALUES ('veli','demir','vdemir', 'mail', '123456', 'boun ogretmen', '05xx', false);
 
 INSERT INTO MEMBER_PRODUCT_LIST (member_id, product_id) VALUES (1, 1)

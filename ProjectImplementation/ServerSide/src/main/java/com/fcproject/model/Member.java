@@ -32,6 +32,9 @@ public class Member {
 
     private String phone;
 
+    @Column(nullable = false)
+    private Boolean membership;
+
     @ManyToMany()
     @JoinTable(joinColumns = { @JoinColumn(name = "member_id") }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
     private List<Product> productList;
@@ -66,7 +69,11 @@ public class Member {
         return phone;
     }
 
+    public Boolean getMembership() { return membership; }
+
     public List<Product> getProductList() {
         return productList;
     }
+
+    public void setMembership(Boolean membership) { this.membership = membership; }
 }

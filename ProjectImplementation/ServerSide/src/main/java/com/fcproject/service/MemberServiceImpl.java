@@ -29,7 +29,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member saveMember(Member member) {
-        return memberRepository.save(member);
+    public Member saveMember(Member member) { return memberRepository.save(member);}
+
+    @Override
+    public void updateMember(int id, Member newMember) {
+        Member updatedMember = memberRepository.findOne(id);
+        updatedMember.setMembership(newMember.getMembership());
+        memberRepository.save(updatedMember);
     }
+
+    @Override
+    public Iterable<Member> listMembersForApprove() { return memberRepository.findByMembership(false); }
 }

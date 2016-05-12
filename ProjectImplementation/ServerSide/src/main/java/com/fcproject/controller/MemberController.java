@@ -36,4 +36,12 @@ public class MemberController {
         //Todo: Exception
         return member;
     }
+
+    @RequestMapping(value = "/membersforapprove", method = RequestMethod.GET)
+    public Iterable<Member>  getMemberForApprove() { return memberService.listMembersForApprove(); }
+
+    @RequestMapping(value = "/member/update/{id}", method = RequestMethod.PUT)
+    public void updateMember(@PathVariable("id") int id, @RequestBody Member newMember) {
+        memberService.updateMember(id, newMember);
+    }
 }

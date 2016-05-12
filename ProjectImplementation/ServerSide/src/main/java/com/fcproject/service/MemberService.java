@@ -11,4 +11,8 @@ public interface MemberService {
     Member getMemberById(Integer id);
 
     Member saveMember(Member member);
+
+    void updateMember(int id, Member newMember);
+
+    Iterable<Member> listMembersForApprove();
 }
