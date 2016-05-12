@@ -13,6 +13,7 @@ angular.module('Producers', []);
 angular.module('Stock', []);
 angular.module('Sell', []);
 angular.module('Volunteer', []);
+angular.module('Admin', []);
 
 angular.module('BasicHttpAuth', [
         'Authentication',
@@ -23,6 +24,7 @@ angular.module('BasicHttpAuth', [
         'Stock',
         'Sell',
         'Volunteer',
+        'Admin',
         'ngRoute',
         'ngCookies'
     ])
@@ -73,6 +75,11 @@ angular.module('BasicHttpAuth', [
             .when('/volunteer', {
                 controller: 'VolunteerController',
                 templateUrl: 'modules/volunteer/views/volunteer.html'
+            })
+
+            .when('/admin', {
+                controller: 'AdminController',
+                templateUrl: 'modules/admin/views/admin.html'
             })
 
             .otherwise({ redirectTo: '/login' });
