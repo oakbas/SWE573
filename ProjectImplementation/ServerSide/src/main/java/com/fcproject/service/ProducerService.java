@@ -14,4 +14,6 @@ public interface ProducerService {
     Producer saveProducer(Producer producer);
 
     Iterable<Product> listProductsByProducerId (Integer id);
+
+    void updateProducer(int id, Producer newProducer);
 }

@@ -38,4 +38,15 @@ public class ProducerServiceImpl implements ProducerService{
     public Iterable<Product> listProductsByProducerId (Integer id) {
         return producerRepository.findOne(id).getProductList();
     }
+
+    @Override
+    public void updateProducer(int id, Producer newProducer) {
+        Producer updatedProducer = producerRepository.findOne(id);
+        updatedProducer.setProducerName(newProducer.getProducerName());
+        updatedProducer.setProducerAddress(newProducer.getProducerAddress());
+        updatedProducer.setProducerCity(newProducer.getProducerCity());
+        updatedProducer.setProducerDesc(newProducer.getProducerDesc());
+        updatedProducer.setProducerPhone(newProducer.getProducerPhone());
+        producerRepository.save(updatedProducer);
+    }
 }

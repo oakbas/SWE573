@@ -48,4 +48,14 @@ public class Producer {
     public String getProducerPhone() { return producerPhone; }
 
     public List<Product> getProductList() { return productList; }
+
+    public void setProducerName(String producerName) { this.producerName = producerName; }
+
+    public void setProducerAddress(String producerAddress) { this.producerAddress = producerAddress; }
+
+    public void setProducerCity(String producerCity) { this.producerCity = producerCity; }
+
+    public void setProducerDesc(String producerDesc) { this.producerDesc = producerDesc; }
+
+    public void setProducerPhone(String producerPhone) { this.producerPhone = producerPhone; }
 }
