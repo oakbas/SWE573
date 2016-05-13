@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ModalInstanceController">
+<div class="modal-header">
+    <h3 class="modal-title">{{updatedProducer.producerName}} Guncelle</h3>
+</div>
+<div class="modal-body">
+    <div class = "row">
+        <div class="col-sm-3">
+            <label for="producerName">Uretici Ismi</label>
+            <input type="text" name="producerName" id="producerName" class="form-control" ng-model="updatedProducer.producerName"/>
+        </div>
+        <div class="col-sm-3">
+            <label for="producerDesc">Aciklama</label>
+            <input type="text" name="producerDesc" id="producerDesc" class="form-control" ng-model="updatedProducer.producerDesc"/>
+        </div>
+        <div class="col-sm-3">
+            <label for="producerPhone">Telefonu</label>
+            <input type="text" name="producerCity" id="producerPhone" class="form-control" ng-model="updatedProducer.producerPhone"/>
+        </div>
+    </div>
+    <div class = "row">
+        <div class="col-sm-3">
+            <label for="producerCity">Bulundugu Sehir</label>
+            <input type="text" name="producerCity" id="producerCity" class="form-control" ng-model="updatedProducer.producerCity"/>
+        </div>
+    </div>
+    <div class = "row">
+        <div class="col-sm-3">
+            <label for="producerAddress">Adresi</label>
+            <input type="text" name="producerAddress" id="producerAddress" class="form-control" ng-model="updatedProducer.producerAddress"/>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="updateProducer()">Guncelle</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</body>
+</html>

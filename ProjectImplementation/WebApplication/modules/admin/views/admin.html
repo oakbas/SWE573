@@ -24,7 +24,7 @@
             <li><a href="#/volunteer">Gonullu Calismalar</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+            <li><a href="#/admin">Admin</a></li>
         </ul>
     </div>
 </nav>
@@ -75,7 +75,7 @@
                 <td class="col-xs-1">{{producer.id}}</td>
                 <td class="col-xs-1">{{producer.producerName}}</td>
                 <td class="col-xs-1">
-                    <button class="glyphicon glyphicon-pencil btn btn-warning btn-xs" ng-click=""></button>
+                    <button class="glyphicon glyphicon-pencil btn btn-warning btn-xs" ng-controller="ModalController" ng-click="openUpdateProducerModal(producer)"></button>
                 </td>
             </tr>
             </tbody>

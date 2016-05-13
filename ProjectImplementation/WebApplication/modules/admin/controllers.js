@@ -4,21 +4,19 @@
 
 'use strict';
 
-angular.module('Admin')
+angular.module('Admin', ['ui.bootstrap'])
 
     .controller('AdminController',
         ['$scope', 'AdminService',
             function ($scope, AdminService) {
                 $scope.data = { memberList: [],
                                 producerList: [],
-
                 }
 
                 $scope.init = function(){
 
                     AdminService.getMembersForApproval(function (response) {
                         if(response.status == '200') {
-                            console.log("successful");
                             $scope.data.memberList = response.data;
                         }
                     });
@@ -58,4 +56,52 @@ angular.module('Admin')
                     });
                 }
 
-            }]);
+            }])
+
+    .controller('ModalController',
+        ['$scope', '$rootScope', '$uibModal', 'AdminCommonService',
+            function ($scope, $rootScope, $uibModal, AdminCommonService) {
+
+        $scope.openUpdateProducerModal = function(selectedProducer){
+
+            AdminCommonService.setSelectedProducer(selectedProducer);
+
+            $scope.animationsEnabled = true;
+            var newModalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'modules/admin/views/producerupdate.html',
+                controller: 'ModalInstanceController',
+                size: 'lg',
+                resolve: {
+                }
+            });
+        }
+    }])
+
+    .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService) {
+
+        $scope.updatedProducer = {};
+
+        $scope.init = function (){
+            $scope.updatedProducer = AdminCommonService.getSelectedProducer();
+        }
+
+        $scope.init();
+
+        $scope.updateProducer = function (){
+            AdminService.producerUpdate($scope.updatedProducer, function(response){
+                if(response.status == '200') {
+                    AdminCommonService.setSelectedProducer($scope.updatedProducer);
+                    $scope.ok();
+                }
+            });
+        }
+
+        $scope.ok = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }]);

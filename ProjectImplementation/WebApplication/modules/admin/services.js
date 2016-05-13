@@ -45,5 +45,39 @@ angular.module('Admin')
                     });
                 };
 
+                service.producerUpdate = function (producerObject, callback) {
+                    var putUrl = $rootScope.serverURL + "/producer/update/" + producerObject.id
+                    var req = {
+                        method: 'PUT',
+                        url: putUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: producerObject
+                    }
+
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                };
+
+                return service;
+            }])
+
+    .factory('AdminCommonService',
+        ['$rootScope',
+            function ($rootScope) {
+                var service = {};
+
+                var selectedProducer = {};
+
+                service.setSelectedProducer = function (sProducer) {
+                    selectedProducer = sProducer;
+                }
+
+                service.getSelectedProducer = function () {
+                    return selectedProducer;
+                }
+
                 return service;
             }])
