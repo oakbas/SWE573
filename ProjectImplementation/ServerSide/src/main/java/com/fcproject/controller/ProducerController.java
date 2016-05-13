@@ -6,6 +6,8 @@ import com.fcproject.service.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by ozlemakbas on 05/04/16.
  */
@@ -42,4 +44,8 @@ public class ProducerController {
         producerService.updateProducer(id, newProducer);
     }
 
+    @RequestMapping(value = "/addProducer", method = RequestMethod.POST)
+    public void saveProducer(@Valid @RequestBody Producer producer) {
+        producerService.saveProducer(producer);
+    }
 }
