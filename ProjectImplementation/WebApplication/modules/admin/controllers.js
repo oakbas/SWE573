@@ -76,11 +76,26 @@ angular.module('Admin', ['ui.bootstrap'])
                 }
             });
         }
+
+        $scope.openNewProducerModal = function(){
+
+            $scope.animationsEnabled = true;
+            var newModalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'modules/admin/views/produceradd.html',
+                controller: 'ModalInstanceController',
+                size: 'lg',
+                resolve: {
+                }
+            });
+        }
+
     }])
 
     .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService) {
 
         $scope.updatedProducer = {};
+        $scope.newProducer = {};
 
         $scope.init = function (){
             $scope.updatedProducer = AdminCommonService.getSelectedProducer();
@@ -93,6 +108,20 @@ angular.module('Admin', ['ui.bootstrap'])
                 if(response.status == '200') {
                     AdminCommonService.setSelectedProducer($scope.updatedProducer);
                     $scope.ok();
+                }
+            });
+        }
+        
+        $scope.addProducer = function () {
+            $scope.newProducer = {  producerName: $scope.producerName,
+                                    producerDesc: $scope.producerDesc,
+                                    producerCity: $scope.producerCity,
+                                    producerAddress: $scope.producerAddress,
+                                    producerPhone: $scope.producerPhone,
+            }
+            AdminService.producerAdd($scope.newProducer, function(response){
+                if(response.status == '200') {
+                    $scope.cancel();
                 }
             });
         }

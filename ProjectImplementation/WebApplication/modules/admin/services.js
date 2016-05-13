@@ -61,6 +61,22 @@ angular.module('Admin')
                     });
                 };
 
+                service.producerAdd =  function (producerObject, callback) {
+                    var postUrl = $rootScope.serverURL + "addProducer"
+                    var req = {
+                        method: 'POST',
+                        url: postUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: producerObject
+                    }
+
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                }
+
                 return service;
             }])
 
