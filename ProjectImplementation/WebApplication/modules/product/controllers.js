@@ -48,5 +48,28 @@ angular.module('Product')
                 $scope.productsPage = function(){
                     $location.path('/products');
                 }
+                
+                $scope.getComments = function () {
+                    ProductService.getAllComments(function(response){
+                        if(response.status == '200'){
+                            $scope.data.commentList = response.data;
+                        }
+                    });
+                }
+
+                $scope.addComment = function(){
+                    var commentData =  {
+                        username: "uretici",
+                        body: $scope.commentBody,
+                        product: {id: $scope.data.productInfo.id},
+                    }
+
+                    ProductService.submitComment(commentData, function (response) {
+                        if(response.status == '200') {
+                            console.log("successful");
+                            $scope.getComments();
+                        }
+                    });
+                }
 
             }]);

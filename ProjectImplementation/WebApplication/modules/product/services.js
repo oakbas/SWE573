@@ -18,6 +18,34 @@ angular.module('Product')
                             return response.data;
                         });
                 };
+
+                service.getAllComments = function (callback) {
+
+                    $http.get($rootScope.serverURL + "comments", {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
+                service.submitComment = function (commentObject, callback) {
+
+                    var postUrl = $rootScope.serverURL + "addComment"
+                    var req = {
+                        method: 'POST',
+                        url: postUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: commentObject
+                    }
+
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                };
+
                 return service;
             }])
 
