@@ -11,13 +11,13 @@ angular.module('Producers', ['ngMap'])
             function ($scope, $location, ProducersService, ProducerCommonService) {
 
                 $scope.data = {
-                    producerLists: null,
+                    producerList: null,
                 }
 
                 $scope.init = function () {
                     ProducersService.getAllProducers(function(response){
                         if(response.status == '200'){
-                            $scope.data.producerLists = response.data;
+                            $scope.data.producerList = response.data;
                         }
                     });
                 }
@@ -27,7 +27,7 @@ angular.module('Producers', ['ngMap'])
                 $scope.getAllProducers = function() {
                     ProducersService.getAllProducers(function(response){
                         if(response.status == '200'){
-                            $scope.data.producerLists = response.data;
+                            $scope.data.producerList = response.data;
                         }
                     });
                 }
