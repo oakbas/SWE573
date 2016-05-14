@@ -52,6 +52,11 @@ angular.module('BasicHttpAuth', [
                 templateUrl: 'modules/product/views/products.html'
             })
 
+            .when('/product', {
+                controller: 'ProductDescController',
+                templateUrl: 'modules/product/views/product.html'
+            })
+
             .when('/producer', {
                 controller: 'ProducerDescController',
                 templateUrl: 'modules/producers/views/producer.html'

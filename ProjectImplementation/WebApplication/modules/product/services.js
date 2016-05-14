@@ -18,6 +18,24 @@ angular.module('Product')
                             return response.data;
                         });
                 };
+                return service;
+            }])
+
+
+    .factory('ProductCommonService',
+        ['$rootScope',
+            function ($rootScope) {
+                var service = {};
+
+                var selectedProduct = {};
+
+                service.setSelectedProduct = function (selected) {
+                    selectedProduct = selected;
+                }
+
+                service.getSelectedProduct = function () {
+                    return selectedProduct;
+                }
 
                 return service;
             }])
