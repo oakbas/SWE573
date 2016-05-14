@@ -4,7 +4,7 @@
 
 'use strict';
 
-angular.module('Admin', ['ui.bootstrap'])
+angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
 
     .controller('AdminController',
         ['$scope', 'AdminService',
@@ -92,7 +92,7 @@ angular.module('Admin', ['ui.bootstrap'])
 
     }])
 
-    .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService) {
+    .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', 'Upload', function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService, Upload) {
 
         $scope.updatedProducer = {};
         $scope.newProducer = {};
@@ -125,6 +125,36 @@ angular.module('Admin', ['ui.bootstrap'])
                 }
             });
         }
+
+        $scope.submit = function() {
+            if ($scope.form.file.$valid && $scope.file) {
+                $scope.upload($scope.file);
+            }
+        };
+
+        // upload on file select or drop
+        $scope.upload = function (file) {
+            Upload.upload({
+                url: $rootScope.serverURL + 'addProducer',
+                data: {
+                        file: file,
+                        producerName: $scope.producerName,
+                        producerDesc: $scope.producerDesc,
+                        producerCity: $scope.producerCity,
+                        producerAddress: $scope.producerAddress,
+                        producerPhone: $scope.producerPhone
+                },
+                headers: { 'Content-Type': 'application/json'
+                },
+            }).then(function (resp) {
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ');
+            });
+        };
 
         $scope.ok = function () {
             $uibModalInstance.close();
