@@ -29,6 +29,8 @@ public class Producer {
 
     private String producerPhone;
 
+    public String photoURL;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany (mappedBy = "producer")
     private List<Product> productList;
@@ -49,6 +51,10 @@ public class Producer {
 
     public List<Product> getProductList() { return productList; }
 
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
     public void setProducerName(String producerName) { this.producerName = producerName; }
 
     public void setProducerAddress(String producerAddress) { this.producerAddress = producerAddress; }
@@ -58,4 +64,8 @@ public class Producer {
     public void setProducerDesc(String producerDesc) { this.producerDesc = producerDesc; }
 
     public void setProducerPhone(String producerPhone) { this.producerPhone = producerPhone; }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
 }
