@@ -37,7 +37,7 @@ public class Member {
 
     @ManyToMany()
     @JoinTable(joinColumns = { @JoinColumn(name = "member_id") }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
-    private List<Product> productList;
+    private List<SoldProduct> soldProductList;
 
     public Integer getId() {
         return id;
@@ -71,8 +71,8 @@ public class Member {
 
     public Boolean getMembership() { return membership; }
 
-    public List<Product> getProductList() {
-        return productList;
+    public List<SoldProduct> getSoldProductList() {
+        return soldProductList;
     }
 
     public void setMembership(Boolean membership) { this.membership = membership; }
