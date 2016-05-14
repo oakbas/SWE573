@@ -118,6 +118,9 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
                                     producerCity: $scope.producerCity,
                                     producerAddress: $scope.producerAddress,
                                     producerPhone: $scope.producerPhone,
+                                    producerLatitude: $scope.producerLatitude,
+                                    producerLongitude: $scope.producerLongitude
+
             }
             AdminService.producerAdd($scope.newProducer, function(response){
                 if(response.status == '200') {
@@ -142,7 +145,9 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
                         producerDesc: $scope.producerDesc,
                         producerCity: $scope.producerCity,
                         producerAddress: $scope.producerAddress,
-                        producerPhone: $scope.producerPhone
+                        producerPhone: $scope.producerPhone,
+                        producerLatitude: $scope.producerLatitude,
+                        producerLongitude: $scope.producerLongitude
                 },
                 headers: { 'Content-Type': 'application/json'
                 },

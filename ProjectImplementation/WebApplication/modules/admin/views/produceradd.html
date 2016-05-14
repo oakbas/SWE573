@@ -36,6 +36,16 @@
     </div>
     <div class = "row">
         <div class="col-sm-3">
+            <label for="producerLatitude">Enlem Bilgisi</label>
+            <input type="text" name="producerLatitude" id="producerLatitude" class="form-control" ng-model="producerLatitude"/>
+        </div>
+        <div class="col-sm-3">
+            <label for="producerLongitude">Boylam Bilgisi</label>
+            <input type="text" name="producerLongitude" id="producerLongitude" class="form-control" ng-model="producerLongitude"/>
+        </div>
+    </div>
+    <div class = "row">
+        <div class="col-sm-3">
             <label>Ureticinin resmini yukleyiniz:</label>
             <div class="btn btn-warning" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
                  ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"

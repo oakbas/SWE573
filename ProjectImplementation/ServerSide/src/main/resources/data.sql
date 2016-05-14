@@ -18,11 +18,11 @@ INSERT INTO PACKAGING_TYPE (packaging_name) VALUES ('cam sise');
 
 INSERT INTO PACKAGING_TYPE (packaging_name) VALUES ('teneke kutu');
 
-INSERT INTO PRODUCER (producer_name, producer_city, producer_address, producer_phone, producer_desc)
-VALUES ('Ilhan Koculu', 'Kars', 'Kars Zavot Koyu', '05xxx', 'Ilhan Bey peynircilik ile ugrasiyor, 10 seneden beri Kars gravyer peyniri ureticiligi yapiyor.' );
+INSERT INTO PRODUCER (producer_name, producer_city, producer_address, producer_phone, producer_desc, producer_latitude, producer_longitude)
+VALUES ('Ilhan Koculu', 'Kars', 'Kars Zavot Koyu', '05xxx', 'Ilhan Bey peynircilik ile ugrasiyor, 10 seneden beri Kars gravyer peyniri ureticiligi yapiyor.', 37.17, 38.79 );
 
-INSERT INTO PRODUCER (producer_name, producer_city, producer_address, producer_phone, producer_desc)
-VALUES ('Burhan Albayrak', 'Balikesir', 'Haciilbey Mahallesi Tavanlipinar Sokak No:1', '05xxx', 'Burhan Bey aricilik ile ugrasiyor, kucuk bir ari ciftligi var.' );
+INSERT INTO PRODUCER (producer_name, producer_city, producer_address, producer_phone, producer_desc, producer_latitude, producer_longitude)
+VALUES ('Burhan Albayrak', 'Balikesir', 'Haciilbey Mahallesi Tavanlipinar Sokak No:1', '05xxx', 'Burhan Bey aricilik ile ugrasiyor, kucuk bir ari ciftligi var.', 37.17, 38.79 );
 
 INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount, packaging_type_id, price, rate, producer_id) VALUES ('ezine peyniri','konya',200, 1, 20, 3, 5, 3, 2);
 
