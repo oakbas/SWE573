@@ -24,8 +24,6 @@ VALUES ('Ilhan Koculu', 'Kars', 'Kars Zavot Koyu', '05xxx', 'Ilhan Bey peynircil
 INSERT INTO PRODUCER (producer_name, producer_city, producer_address, producer_phone, producer_desc)
 VALUES ('Burhan Albayrak', 'Balikesir', 'Haciilbey Mahallesi Tavanlipinar Sokak No:1', '05xxx', 'Burhan Bey aricilik ile ugrasiyor, kucuk bir ari ciftligi var.' );
 
-INSERT INTO COMMENT (body, username) VALUES ('deneme yorumu', 'denemeuser');
-
 INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount, packaging_type_id, price, rate, producer_id) VALUES ('ezine peyniri','konya',200, 1, 20, 3, 5, 3, 2);
 
 INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount, packaging_type_id, price, rate, producer_id) VALUES ('kars gravyer peyniri','Kars',100, 1, 15, 4, 30, 4, 1);
@@ -34,4 +32,10 @@ INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, me
 
 INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, membership) VALUES ('veli','demir','vdemir', 'mail', '123456', 'boun ogretmen', '05xx', false);
 
-INSERT INTO MEMBER_PRODUCT_LIST (member_id, product_id) VALUES (1, 1)
+INSERT INTO MEMBER_PRODUCT_LIST (member_id, product_id) VALUES (1, 1);
+
+INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
+
+INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
+
+INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);

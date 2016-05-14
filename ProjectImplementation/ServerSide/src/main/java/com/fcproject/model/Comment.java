@@ -1,5 +1,7 @@
 package com.fcproject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 /**
@@ -15,7 +17,8 @@ public class Comment {
     @Column(nullable = false)
     private String body;
 
-    @ManyToOne()
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne(optional = false)
     private Product product;
 
     @Column(nullable = false)
