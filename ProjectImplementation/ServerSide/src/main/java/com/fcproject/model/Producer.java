@@ -31,6 +31,12 @@ public class Producer {
 
     public String photoURL;
 
+    @Column(columnDefinition = "FLOAT(10,6)")
+    private float producerLatitude;
+
+    @Column(columnDefinition = "FLOAT(10,6)")
+    private float producerLongitude;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany (mappedBy = "producer")
     private List<Product> productList;
@@ -55,6 +61,10 @@ public class Producer {
         return photoURL;
     }
 
+    public float getProducerLatitude() { return producerLatitude; }
+
+    public float getProducerLongitude() { return producerLongitude; }
+
     public void setProducerName(String producerName) { this.producerName = producerName; }
 
     public void setProducerAddress(String producerAddress) { this.producerAddress = producerAddress; }
@@ -65,7 +75,9 @@ public class Producer {
 
     public void setProducerPhone(String producerPhone) { this.producerPhone = producerPhone; }
 
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }
+    public void setPhotoURL(String photoURL) { this.photoURL = photoURL; }
+
+    public void setProducerLongitude(float producerLongitude) { this.producerLongitude = producerLongitude; }
+
+    public void setProducerLatitude(float producerLatitude) { this.producerLatitude = producerLatitude; }
 }

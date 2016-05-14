@@ -47,6 +47,8 @@ public class ProducerServiceImpl implements ProducerService{
         updatedProducer.setProducerCity(newProducer.getProducerCity());
         updatedProducer.setProducerDesc(newProducer.getProducerDesc());
         updatedProducer.setProducerPhone(newProducer.getProducerPhone());
+        updatedProducer.setProducerLongitude(newProducer.getProducerLongitude());
+        updatedProducer.setProducerLatitude(newProducer.getProducerLatitude());
         producerRepository.save(updatedProducer);
     }
 }
