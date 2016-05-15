@@ -29,6 +29,21 @@ angular.module('Sell')
                         });
                 };
 
+                service.addSoldProduct = function (soldObject, callback) {
+                    var postUrl = $rootScope.serverURL + "addsoldproduct"
+                    var req = {
+                        method: 'POST',
+                        url: postUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: soldObject
+                    }
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                };
+
                 service.getAllProducers = function (callback) {
 
                     $http.get($rootScope.serverURL + "producers", {headers: { 'Content-Type': 'application/json'
@@ -38,6 +53,22 @@ angular.module('Sell')
                             return response.data;
                         });
                 };
+
+                service.updateStock = function (productObject, callback) {
+                    var putUrl = $rootScope.serverURL + "/product/update/" + productObject.id
+                    var req = {
+                        method: 'PUT',
+                        url: putUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: productObject
+                    }
+
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                }
 
                 return service;
             }])

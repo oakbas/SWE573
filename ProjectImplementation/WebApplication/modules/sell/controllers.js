@@ -51,10 +51,21 @@ angular.module('Sell')
                     }
                     else{
                         var soldPrice = amount * $scope.data.selectedRadio.price;
-                        var soldProduct = {product: $scope.data.selectedRadio, soldPrice: soldPrice}
+                        var soldProduct = {product: $scope.data.selectedRadio, soldPrice: soldPrice, soldAmount: amount}
                         $scope.data.soldProductList.push(soldProduct);
                         $scope.data.sumAmount += soldPrice;
                     }
+
+                    $scope.data.selectedRadio = null;
+                }
+
+                $scope.removeElement = function (){
+                    for (var i = 0; i< $scope.data.soldProductList.length; i++){
+                        if ($scope.data.selectedRadio.product.id == $scope.data.soldProductList[i].product.id){
+                            $scope.data.soldProductList.splice(i);
+                        }
+                    }
+                    $scope.data.selectedRadio = null;
                 }
 
                 /* data.selectedRadio is changed under the new scope, to bind to the parent scope's we should use
@@ -85,6 +96,42 @@ angular.module('Sell')
                                 console.log('dogrulanamadi');
 
                             }
+                        }
+                    });
+
+                    $scope.memberId = null;
+                }
+
+                $scope.completeSession = function (){
+                    for (var i = 0; i< $scope.data.soldProductList.length; i++){
+                        if($scope.data.verified){
+                            var soldData = {product: $scope.data.soldProductList[i].product,
+                                            soldPrice: $scope.data.soldProductList[i].soldPrice,
+                                            soldAmount: $scope.data.soldProductList[i].soldAmount,
+                                            soldDate: '2016-06-06',
+                                            member: {id: $scope.memberId}}
+                        }
+                        else{
+                            soldData = {product: $scope.data.soldProductList[i].product,
+                                soldPrice: $scope.data.soldProductList[i].soldPrice,
+                                soldAmount: $scope.data.soldProductList[i].soldAmount,
+                                soldDate: '2016-06-06'}
+                        }
+                        SellService.addSoldProduct(soldData, function(response){
+                            if(response.status == '200') {
+                                soldData.product.unitAmount = soldData.product.unitAmount - soldData.soldAmount;
+                                $scope.updateStock(soldData.product);
+                            }
+                        });
+                    }
+                    $scope.data.soldProductList = [];
+                    $scope.data.sumAmount = 0;
+                }
+
+                $scope.updateStock = function(productData){
+                    SellService.updateStock(productData, function(response){
+                        if(response.status == '200') {
+                            console.log('guncellendi');
                         }
                     });
                 }

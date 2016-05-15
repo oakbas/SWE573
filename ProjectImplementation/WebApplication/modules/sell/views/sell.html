@@ -8,7 +8,7 @@
                 <table class=" table table-response" style="background: #feffff">
                     <thead>
                     <tr>
-                        <th class="col-xs-1"></th>
+                        <th class="col-xs-1">Sec</th>
                         <th class="col-xs-1">Id</th>
                         <th class="col-xs-1">Urun Ismi</th>
                         <th class="col-xs-1">Uretici Ismi</th>
@@ -40,6 +40,7 @@
                 </div>
                 <br>
                 <button type="button" class="btn btn-primary" ng-click = "addToList(sellAmount)">Secili Urunu Listeye Ekle</button>
+                <button type="button" class="btn btn-primary" ng-click = "removeElement()">Secili Urunu Listeden Kaldir</button>
             </div>
         </div>
         <div class="row" >
@@ -47,7 +48,7 @@
             <table class=" table table-response" style="background: #feffff">
                 <thead>
                 <tr>
-                    <th class="col-xs-1"></th>
+                    <th class="col-xs-1">Sec</th>
                     <th class="col-xs-1">Id</th>
                     <th class="col-xs-1">Urun Ismi</th>
                     <th class="col-xs-1">Adet Miktari</th>
@@ -56,10 +57,12 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="sp in data.soldProductList" ng-class-odd="'alt'">
-                    <th class="col-xs-1"></th>
+                    <th class="col-xs-1">
+                        <input type="radio" ng-model="$parent.data.selectedRadio" name="name" ng-value="sp" ng-change="$parent.radioProductSelected(sp)">
+                    </th>
                     <td class="col-xs-1">{{sp.product.id}}</td>
                     <td class="col-xs-1">{{sp.product.productName}}</td>
-                    <td class="col-xs-1">{{sellAmount}}</td>
+                    <td class="col-xs-1">{{sp.soldAmount}}</td>
                     <th class="col-xs-1">{{sp.soldPrice}}</th>
                 </tr>
                 </tbody>
@@ -85,7 +88,7 @@
             </div>
         </div>
         <br>
-        <button type="button" class="btn btn-primary" ng-click = "">Tamamla</button>
+        <button type="button" class="btn btn-primary" ng-click = "completeSession()">Tamamla</button>
         <button type="button" class="btn btn-primary" ng-click = "">Iptal Et</button>
     </form>
 
