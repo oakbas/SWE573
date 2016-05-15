@@ -58,7 +58,7 @@
                 <div class="col-sm-6">
                     <label for="dueDate">Tarih Seciniz:</label>
                     <input type="date" id="dueDate" name="dueDate" ng-model="dueDate" placeholder="yyyy-MM-dd" required />
-                    <span ng-show="form.dueDate.$dirty && form.dueDate.$error.required" class="help-block">Duyuru yazmaniz gerekmektedir</span>
+                    <span ng-show="form.dueDate.$dirty && form.dueDate.$error.required" class="help-block">Tarih girmeniz gerekmektedir</span>
                 </div>
                 <br>
             </div>
@@ -67,9 +67,29 @@
     </div>
     <div class = "col-sm-4">
         <h4>Takvim</h4>
+        <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
     </div>
     <div class = "col-sm-4">
         <h4>Gonullu Calismaya Katil</h4>
+        <form name="form" role="form">
+            <div class = "row">
+                <div class="col-sm-6">
+                    <label for="workDate">Tarih Seciniz:</label>
+                    <input type="date" id="workDate" name="workDate" ng-model="workDate" placeholder="yyyy-MM-dd" required />
+                    <span ng-show="form.workDate.$dirty && form.workDate.$error.required" class="help-block">Tarih girmeniz gerekmektedir</span>
+                </div>
+                <br>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="workSelect"> Uygun Isler: </label>
+                    <select name="workSelect" id="workSelect" ng-model="data.selectedWork">
+                        <option ng-repeat="option in data.availableWorks" value="{{option.id}}">{{option.worktypeName}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" ng-disabled="form.$invalid" ng-click="addVolunteerWork()">Yolla</button>
+        </form>
         <br>
         <button type="button" class="btn btn-primary" ng-click = "openSellPage()">Satis Ekranina Git</button>
         <button type="button" class="btn btn-primary" ng-click = "openStockPage()">Stok Ekranina Git</button>

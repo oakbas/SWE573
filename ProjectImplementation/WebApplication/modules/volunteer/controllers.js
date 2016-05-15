@@ -13,12 +13,20 @@ angular.module('Volunteer')
                 $scope.data = {
                     newsList: [],
                     currentDate: null,
+                    selectedWork: null,
+                    availableWorks: [],
                 }
                 
                 $scope.init = function () {
                     VolunteerService.getAllNews(function(response){
                         if(response.status == '200'){
                             $scope.data.newsList = response.data;
+                        }
+                    });
+
+                    VolunteerService.getAllWorkTypes(function(response){
+                        if(response.status == '200'){
+                            $scope.data.availableWorks = response.data;
                         }
                     });
 
@@ -45,6 +53,19 @@ angular.module('Volunteer')
                     VolunteerService.addNews(newsData, function (response) {
                         if(response.status == '200') {
                             $scope.getAllNews();
+                        }
+                    });
+                }
+
+                $scope.addVolunteerWork = function(){
+                    var workData =  {
+                        workDate: $scope.workDate,
+                        worktype: {id: $scope.data.selectedWork},
+                        member: {id: 1}
+                    }
+                    VolunteerService.addVolunteerWork(workData, function (response) {
+                        if(response.status == '200') {
+                            console.log("oldu");
                         }
                     });
                 }

@@ -19,6 +19,16 @@ angular.module('Volunteer')
                         });
                 };
 
+                service.getAllWorkTypes = function (callback) {
+
+                    $http.get($rootScope.serverURL + "worktypes", {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 service.addNews = function (newsObject, callback) {
 
                     var postUrl = $rootScope.serverURL + "addnews"
@@ -28,6 +38,23 @@ angular.module('Volunteer')
                         headers: { 'Content-Type': 'application/json'
                         },
                         data: newsObject
+                    }
+
+                    $http(req).then(function(response) {
+                        callback(response)
+                        return response.data;
+                    });
+                };
+
+                service.addVolunteerWork = function (workObject, callback) {
+
+                    var postUrl = $rootScope.serverURL + "addvolunteerwork"
+                    var req = {
+                        method: 'POST',
+                        url: postUrl,
+                        headers: { 'Content-Type': 'application/json'
+                        },
+                        data: workObject
                     }
 
                     $http(req).then(function(response) {
