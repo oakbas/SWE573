@@ -98,8 +98,6 @@ angular.module('Sell')
                             }
                         }
                     });
-
-                    $scope.memberId = null;
                 }
 
                 $scope.completeSession = function (){
@@ -109,7 +107,7 @@ angular.module('Sell')
                                             soldPrice: $scope.data.soldProductList[i].soldPrice,
                                             soldAmount: $scope.data.soldProductList[i].soldAmount,
                                             soldDate: '2016-06-06',
-                                            member: {id: $scope.memberId}}
+                                            member: {id: 1}}
                         }
                         else{
                             soldData = {product: $scope.data.soldProductList[i].product,

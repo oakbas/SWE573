@@ -14,6 +14,7 @@ angular.module('Stock', []);
 angular.module('Sell', []);
 angular.module('Volunteer', []);
 angular.module('Admin', []);
+angular.module('Userinfo', []);
 
 angular.module('BasicHttpAuth', [
         'Authentication',
@@ -25,6 +26,7 @@ angular.module('BasicHttpAuth', [
         'Sell',
         'Volunteer',
         'Admin',
+        'Userinfo',
         'ngRoute',
         'ngCookies'
     ])
@@ -85,6 +87,11 @@ angular.module('BasicHttpAuth', [
             .when('/admin', {
                 controller: 'AdminController',
                 templateUrl: 'modules/admin/views/admin.html'
+            })
+
+            .when('/userinfo', {
+                controller: 'UserinfoController',
+                templateUrl: 'modules/userinfo/views/userinfo.html'
             })
 
             .otherwise({ redirectTo: '/login' });
