@@ -31,7 +31,39 @@
 
 <div class = "row">
     <div class = "col-sm-4">
-        <h4>Duyurular</h4>
+        <h4 class="glyphicon glyphicon-bell">Duyurular</h4>
+        <label>Duyurularda Ara: <input ng-model="searchText"></label>
+        <br>
+        <table class=" table table-response" style="background: #fbeed5">
+            <thead>
+            <tr>
+                <th class="col-xs-2">Icerik</th>
+                <th class="col-xs-1">Tarih</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="news in data.newsList | filter:searchText" ng-class-odd="'alt'">
+                <td class="col-xs-2">{{news.newsBody}}</td>
+                <td class="col-xs-1">{{ news.dueDate | date: 'dd-MM-yyyy' }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <form name="form" role="form">
+            <div class = "row">
+                <div class="col-sm-6">
+                    <label for="newsBody">Yeni Duyuru Ekle</label>
+                    <input type="text" name="newsBody" id="newsBody" class="form-control" ng-model="newsBody" required />
+                    <span ng-show="form.newsBody.$dirty && form.newsBody.$error.required" class="help-block">Duyuru yazmaniz gerekmektedir</span>
+                </div>
+                <div class="col-sm-6">
+                    <label for="dueDate">Tarih Seciniz:</label>
+                    <input type="date" id="dueDate" name="dueDate" ng-model="dueDate" placeholder="yyyy-MM-dd" required />
+                    <span ng-show="form.dueDate.$dirty && form.dueDate.$error.required" class="help-block">Duyuru yazmaniz gerekmektedir</span>
+                </div>
+                <br>
+            </div>
+            <button class="btn btn-primary" type="button" ng-disabled="form.$invalid" ng-click="addNews()">Yolla</button>
+        </form>
     </div>
     <div class = "col-sm-4">
         <h4>Takvim</h4>
