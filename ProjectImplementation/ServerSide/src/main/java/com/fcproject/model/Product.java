@@ -40,6 +40,9 @@ public class Product {
     @ManyToOne(optional = false)
     private PackagingType packagingType;
 
+    @ManyToOne(optional = false)
+    private Productcategory productcategory;
+
     @OneToMany(mappedBy = "product")
     private List<Comment> commentList;
 
@@ -76,6 +79,8 @@ public class Product {
     public PackagingType getPackagingType() { return packagingType; }
 
     public List<SoldProduct> getSoldProductList() { return soldProductList; }
+
+    public Productcategory getProductcategory() { return productcategory; }
 
     public void setUnitAmount(Float unitAmount) {
         this.unitAmount = unitAmount;
