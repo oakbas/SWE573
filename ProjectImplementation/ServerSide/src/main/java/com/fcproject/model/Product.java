@@ -3,6 +3,8 @@
  */
 package com.fcproject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -41,7 +43,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Comment> commentList;
 
-    @ManyToMany(targetEntity=Member.class,mappedBy="productList")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "product")
+    private List<SoldProduct> soldProductList;
 
     public Integer getId() {
         return id;
@@ -70,6 +74,8 @@ public class Product {
     public Float getUnitAmount() { return unitAmount; }
 
     public PackagingType getPackagingType() { return packagingType; }
+
+    public List<SoldProduct> getSoldProductList() { return soldProductList; }
 
     public void setUnitAmount(Float unitAmount) {
         this.unitAmount = unitAmount;

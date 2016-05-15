@@ -35,13 +35,13 @@ public class Member {
     @Column(nullable = false)
     private Boolean membership;
 
-    @ManyToMany()
-    @JoinTable(joinColumns = { @JoinColumn(name = "member_id") }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
+    @OneToMany(mappedBy = "member")
     private List<SoldProduct> soldProductList;
 
-    public Integer getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "member")
+    private List<Volunteerwork> volunteerworkList;
+
+    public Integer getId() { return id; }
 
     public String getFirstname() {
         return firstname;
