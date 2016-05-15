@@ -71,4 +71,7 @@ public class Product {
 
     public PackagingType getPackagingType() { return packagingType; }
 
+    public void setUnitAmount(Float unitAmount) {
+        this.unitAmount = unitAmount;
+    }
 }

@@ -3,10 +3,7 @@ package com.fcproject.controller;
 import com.fcproject.model.Product;
 import com.fcproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,6 +23,11 @@ public class ProductController {
     @RequestMapping("/products")
     public Iterable<Product> listAllProducts() {
         return productService.listAllProducts();
+    }
+
+    @RequestMapping(value = "/product/update/{id}", method = RequestMethod.PUT)
+    public void updateProduct(@PathVariable("id") int id, @RequestBody Product newProduct) {
+        productService.updateProduct(id, newProduct);
     }
 
     @RequestMapping(value = "/addproduct", method = RequestMethod.POST)

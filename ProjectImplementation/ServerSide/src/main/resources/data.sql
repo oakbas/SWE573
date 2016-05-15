@@ -37,5 +37,3 @@ INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denem
 INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
 
 INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
-
-INSERT INTO SOLD_PRODUCT (product_name, sold_amount, member_id, producer_id, sold_date) VALUES ('kars gravyer', 1, 1, 1, '2016-06-06');
