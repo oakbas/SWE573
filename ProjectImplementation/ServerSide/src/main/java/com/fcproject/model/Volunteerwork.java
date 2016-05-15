@@ -13,19 +13,19 @@ public class Volunteerwork {
     private Integer id;
 
     @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
     private Date workDate;
 
     @ManyToOne(optional = false)
     private Worktype worktype;
 
-    public Integer getId() { return id; }
+    @ManyToOne(optional = false)
+    private Member member;
 
-    public String getDescription() { return description; }
+    public Integer getId() { return id; }
 
     public Date getWorkDate() { return workDate; }
 
     public Worktype getWorktype() { return worktype; }
+
+    public Member getMember() { return member; }
 }

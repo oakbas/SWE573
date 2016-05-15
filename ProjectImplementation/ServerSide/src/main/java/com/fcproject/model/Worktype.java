@@ -13,18 +13,14 @@ public class Worktype {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String volunteerworkName;
+    private String worktypeName;
 
     @OneToMany(mappedBy = "worktype")
     private List<Volunteerwork> volunteerworkList;
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
-    public String getUnitName() {
-        return volunteerworkName;
-    }
+    public String getWorktypeName() { return worktypeName; }
 
     public List<Volunteerwork> getVolunteerworkList() { return volunteerworkList; }
 }

@@ -3,7 +3,9 @@ package com.fcproject.controller;
 import com.fcproject.model.Volunteerwork;
 import com.fcproject.service.VolunteerworkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,4 +25,10 @@ public class VolunteerworkController {
     public Iterable<Volunteerwork> listAllVolunteerworks() {
         return volunteerworkService.listAllVolunteerworks();
     }
+
+    @RequestMapping(value = "/addvolunteerwork", method = RequestMethod.POST)
+    public void saveVolunteerwork(@RequestBody Volunteerwork volunteerwork) {
+        volunteerworkService.saveVolunteerwork(volunteerwork);
+    }
+
 }

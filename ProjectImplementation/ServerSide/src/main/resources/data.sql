@@ -37,3 +37,7 @@ INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denem
 INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
 
 INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
+
+INSERT INTO WORKTYPE (worktype_name) VALUES ('stoklama');
+
+INSERT INTO WORKTYPE (worktype_name) VALUES ('satis');
