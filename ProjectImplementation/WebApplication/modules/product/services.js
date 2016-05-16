@@ -19,6 +19,16 @@ angular.module('Product')
                         });
                 };
 
+                service.getAllCategories = function (callback) {
+
+                    $http.get($rootScope.serverURL + "productcategories", {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 service.getAllComments = function (callback) {
 
                     $http.get($rootScope.serverURL + "comments", {headers: { 'Content-Type': 'application/json'

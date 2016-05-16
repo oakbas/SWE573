@@ -31,8 +31,16 @@
         </ul>
     </div>
 </nav>
-
-<div ng-repeat="item in data.productList track by $index" ng-if="$index%3==0">
+<div class="row">
+    <div class="col-sm-3">
+        <label for="catSelect"> Kategoriler: </label>
+        <select name="catSelect" id="catSelect" ng-model="data.catSelect">
+            <option ng-repeat="option in data.categories" value="{{option.id}}">{{option.categoryName}}</option>
+        </select>
+    </div>
+</div>
+<br>
+<div ng-repeat="item in data.productList | filter: filterCategory(data.catSelect) track by $index" ng-if="$index%3==0">
     <div class = "row">
         <div class = "col-sm-4" ng-mouseover="open = true" ng-mouseleave="open = false">
             <img src = "img/kecipeyniri.png" ng-show="data.productList[$index]" width="300" height="200"/>

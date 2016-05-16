@@ -12,12 +12,20 @@ angular.module('Product')
 
                 $scope.data = {
                     productList: null,
+                    categories: null,
+                    catSelect: null,
                 }
 
                 $scope.init = function () {
                     ProductService.getAllProducts(function(response){
                         if(response.status == '200'){
                             $scope.data.productList = response.data;
+                        }
+                    });
+
+                    ProductService.getAllCategories(function(response){
+                        if(response.status == '200'){
+                            $scope.data.categories = response.data;
                         }
                     });
                 }
@@ -29,6 +37,18 @@ angular.module('Product')
                     $location.path('/product');
                 }
 
+                $scope.filterCategory = function(category) {
+                    if (category == null) {
+                        return function (item) {
+                            return item;
+                        }
+                    }
+                    else {
+                        return function (item) {
+                            return item.productcategory.id.toString() === category;
+                        };
+                    }
+                };
             }])
 
     .controller('ProductDescController',
