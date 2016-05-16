@@ -7,8 +7,8 @@
 angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
 
     .controller('AdminController',
-        ['$scope', 'AdminService',
-            function ($scope, AdminService) {
+        ['$scope', '$rootScope', 'AdminService',
+            function ($scope, $rootScope, AdminService) {
                 $scope.data = { memberList: [],
                                 producerList: [],
                 }
@@ -56,6 +56,10 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
                     });
                 }
 
+                $rootScope.$on("CallProducers", function(){
+                    $scope.getAllProducers();
+                });
+
             }])
 
     .controller('ModalController',
@@ -92,7 +96,8 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
 
     }])
 
-    .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', 'Upload', function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService, Upload) {
+    .controller('ModalInstanceController', ['$scope', '$rootScope', '$uibModalInstance', 'AdminCommonService', 'AdminService', 'Upload',
+        function ($scope, $rootScope, $uibModalInstance, AdminCommonService, AdminService, Upload) {
 
         $scope.updatedProducer = {};
         $scope.newProducer = {};
@@ -132,6 +137,7 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
         $scope.submit = function() {
             if ($scope.form.file.$valid && $scope.file) {
                 $scope.upload($scope.file);
+                $rootScope.$emit("CallProducers", {});
                 $scope.ok();
             }
         };
