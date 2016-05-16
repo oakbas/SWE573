@@ -17,12 +17,20 @@ angular.module('Stock')
                                 producerList: [],
                                 selectedProducer: null,
                                 selectedRadio: null,
+                                categories: [],
+                                selectedCategory:null,
                 }
 
                 $scope.init = function() {
                     StockService.getAllUnitTypes(function(response){
                         if(response.status == '200'){
                             $scope.data.unitTypes = response.data;
+                        }
+                    });
+
+                    StockService.getAllCategories(function(response){
+                        if(response.status == '200'){
+                            $scope.data.categories = response.data;
                         }
                     });
 
@@ -66,6 +74,7 @@ angular.module('Stock')
                         unitType: {id: $scope.data.selectedUnitType},
                         price: $scope.unitPrice,
                         unitAmount: $scope.stockAmount,
+                        productcategory: {id: $scope.data.selectedCategory},
                     }
                     StockService.saveProduct(productData, function (response) {
                         if(response.status == '200') {

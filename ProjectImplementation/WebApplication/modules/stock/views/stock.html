@@ -28,6 +28,13 @@
                         <option ng-repeat="packaging in data.packagingTypes" value="{{packaging.id}}">{{packaging.packagingName}}</option>
                     </select>
                 </div>
+                <div class="col-sm-2">
+                    <label for="catSelect"> Urun Kategorisi</label>
+                    <br>
+                    <select name="catSelect" id="catSelect" ng-model="data.selectedCategory">
+                        <option ng-repeat="category in data.categories" value="{{category.id}}">{{category.categoryName}}</option>
+                    </select>
+                </div>
             </div>
             <br>
             <div class="row">

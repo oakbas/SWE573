@@ -29,6 +29,16 @@ angular.module('Stock')
                         });
                 };
 
+                service.getAllCategories = function (callback) {
+
+                    $http.get($rootScope.serverURL + "productcategories", {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 service.getAllProducts = function (callback) {
 
                     $http.get($rootScope.serverURL + "products", {headers: { 'Content-Type': 'application/json'

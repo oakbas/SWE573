@@ -40,15 +40,17 @@ angular.module('Producers', ['ngMap'])
             }])
 
         .controller('ProducerDescController',
-            ['$scope', '$location', 'ProducersService', 'ProducerCommonService',
-                function ($scope, $location, ProducersService, ProducerCommonService) {
+            ['$scope', '$rootScope', '$location', 'ProducersService', 'ProducerCommonService',
+                function ($scope, $rootScope, $location, ProducersService, ProducerCommonService) {
 
                     $scope.data = {
                         producerInfo: null,
+                        imagePlace: null,
                     }
 
                     $scope.init = function() {
                         $scope.data.producerInfo = ProducerCommonService.getSelectedProducer();
+                        $scope.data.imagePlace = $rootScope.serverURL + "images/producers/" + $scope.data.producerInfo.photoURL;
                     }
 
                     $scope.init();
