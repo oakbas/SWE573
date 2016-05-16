@@ -34,4 +34,10 @@ public class ProductController {
     public void saveProduct(@Valid @RequestBody Product product) {
         productService.saveProduct(product);
     }
+
+    @RequestMapping(value = "/products/{productId}", method = RequestMethod.GET)
+    public Product getProduct(@PathVariable("productId") int productId) {
+        Product product = productService.getProductById(productId);
+        return product;
+    }
 }
