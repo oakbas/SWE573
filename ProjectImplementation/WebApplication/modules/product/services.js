@@ -56,6 +56,16 @@ angular.module('Product')
                     });
                 };
 
+                service.getProduct = function (productId, callback) {
+
+                    $http.get($rootScope.serverURL + "products/" + productId, {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 return service;
             }])
 

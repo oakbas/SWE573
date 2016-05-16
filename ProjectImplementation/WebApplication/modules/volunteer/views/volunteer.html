@@ -51,7 +51,7 @@
             </tr>
             </tbody>
         </table>
-        <form name="form" role="form">
+        <form name="form" ng-submit="addNews()" role="form">
             <div class = "row">
                 <div class="col-sm-6">
                     <label for="newsBody">Yeni Duyuru Ekle</label>
@@ -65,7 +65,9 @@
                 </div>
                 <br>
             </div>
-            <button class="btn btn-primary" type="button" ng-disabled="form.$invalid" ng-click="addNews()">Yolla</button>
+            <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Yolla</button>
+            </div>
         </form>
     </div>
     <div class = "col-sm-4">

@@ -132,6 +132,7 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
         $scope.submit = function() {
             if ($scope.form.file.$valid && $scope.file) {
                 $scope.upload($scope.file);
+                $scope.ok();
             }
         };
 

@@ -61,9 +61,22 @@ angular.module('Product')
 
                 $scope.init = function() {
                     $scope.data.productInfo = ProductCommonService.getSelectedProduct();
+                    ProductService.getProduct($scope.data.productInfo.id, function(response){
+                        if(response.status == '200'){
+                            $scope.data.productInfo = response.data;
+                        }
+                    });
                 }
 
                 $scope.init();
+
+                $scope.getProductById = function(){
+                    ProductService.getProduct($scope.data.productInfo.id, function(response){
+                        if(response.status == '200'){
+                            $scope.data.productInfo = response.data;
+                        }
+                    });
+                }
 
                 $scope.productsPage = function(){
                     $location.path('/products');
@@ -72,7 +85,7 @@ angular.module('Product')
                 $scope.getComments = function () {
                     ProductService.getAllComments(function(response){
                         if(response.status == '200'){
-                            $scope.data.commentList = response.data;
+                            $scope.data.productInfo.commentList = response.data;
                         }
                     });
                 }
@@ -86,8 +99,7 @@ angular.module('Product')
 
                     ProductService.submitComment(commentData, function (response) {
                         if(response.status == '200') {
-                            console.log("successful");
-                            $scope.getComments();
+                            $scope.getProductById();
                         }
                     });
                 }
