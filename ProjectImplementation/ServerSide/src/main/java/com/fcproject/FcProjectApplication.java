@@ -26,21 +26,6 @@ public class FcProjectApplication {
 		SpringApplication.run(FcProjectApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner init(final AccountRepository accountRepository) {
-
-		return new CommandLineRunner() {
-
-			@Override
-			public void run(String... arg0) throws Exception {
-				accountRepository.save(new Account("rbaxter", "password"));
-
-			}
-
-		};
-
-	}
-
 }
 
 

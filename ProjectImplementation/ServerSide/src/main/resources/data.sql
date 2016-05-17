@@ -65,3 +65,5 @@ INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denem
 INSERT INTO WORKTYPE (worktype_name) VALUES ('stoklama');
 
 INSERT INTO WORKTYPE (worktype_name) VALUES ('satis');
+
+INSERT INTO ACCOUNT (username, password) VALUES ('password', 'password');
