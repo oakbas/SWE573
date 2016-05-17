@@ -19,14 +19,17 @@ public class Member {
     @Column(nullable = false)
     private String surname;
 
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToOne(optional = false)
+    private Role role;
+
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false)
-    private String password;
 
     private String bio;
 
@@ -51,15 +54,7 @@ public class Member {
         return surname;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public String getEmail() { return email; }
-
-    public String getPassword() {
-        return password;
-    }
 
     public String getBio() {
         return bio;
@@ -69,11 +64,19 @@ public class Member {
         return phone;
     }
 
+    public String getPassword() { return password; }
+
+    public String getUsername() { return username; }
+
     public Boolean getMembership() { return membership; }
+
+    public Role getRole() { return role; }
 
     public List<SoldProduct> getSoldProductList() {
         return soldProductList;
     }
+
+    public List<Volunteerwork> getVolunteerworkList() { return volunteerworkList; }
 
     public void setMembership(Boolean membership) { this.membership = membership; }
 }

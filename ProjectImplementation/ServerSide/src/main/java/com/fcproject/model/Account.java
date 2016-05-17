@@ -1,9 +1,6 @@
 package com.fcproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ozlemakbas on 17/05/16.
@@ -16,16 +13,11 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
     private String password;
-
-    public Account(){}
-
-    public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public Integer getId() {
         return id;

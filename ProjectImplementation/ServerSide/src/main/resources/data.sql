@@ -52,9 +52,17 @@ INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount
 
 INSERT INTO PRODUCT (product_name, product_from, unit, unit_type_id, unit_amount, packaging_type_id, price, rate, producer_id, productcategory_id) VALUES ('kars gravyer peyniri','Kars',100, 1, 15, 4, 30, 4, 1, 1);
 
-INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, membership) VALUES ('ali','demir','ademir', 'deneme', '123456', 'boun ogrenci', '05xx', false);
+INSERT INTO ROLE (role_name) VALUES ('admin');
 
-INSERT INTO MEMBER (firstname,surname, username, email, password, bio, phone, membership) VALUES ('veli','demir','vdemir', 'mail', '123456', 'boun ogretmen', '05xx', false);
+INSERT INTO ROLE (role_name) VALUES ('member');
+
+INSERT INTO ROLE (role_name) VALUES ('nonmember');
+
+INSERT INTO MEMBER (firstname,surname, email, bio, phone, membership, username, password, role_id) VALUES ('nonmember','nonmember', 'nonmemberemail', 'nonmember', 'nonmember', false, 'nonmember', '123456', 3);
+
+INSERT INTO MEMBER (firstname,surname, email, bio, phone, membership, username, password, role_id) VALUES ('ali','demir', 'deneme', 'boun ogrenci', '05xx', false, 'ademir', '123456', 1);
+
+INSERT INTO MEMBER (firstname,surname, email, bio, phone, membership, username, password, role_id) VALUES ('veli','demir', 'mail', 'boun ogretmen', '05xx', false, 'vdemir', '123456', 2);
 
 INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denemeuser', 1);
 
@@ -65,5 +73,3 @@ INSERT INTO COMMENT (body, username, product_id) VALUES ('deneme yorumu', 'denem
 INSERT INTO WORKTYPE (worktype_name) VALUES ('stoklama');
 
 INSERT INTO WORKTYPE (worktype_name) VALUES ('satis');
-
-INSERT INTO ACCOUNT (username, password) VALUES ('password', 'password');

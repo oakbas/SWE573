@@ -1,9 +1,8 @@
 package com.fcproject;
 
-import com.fcproject.model.Account;
-import com.fcproject.repository.AccountRepository;
+import com.fcproject.model.Member;
+import com.fcproject.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -33,7 +32,7 @@ public class FcProjectApplication {
 class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
 	@Autowired
-	AccountRepository accountRepository;
+	MemberRepository memberRepository;
 
 	@Override
 	public void init(AuthenticationManagerBuilder auth) throws Exception {
@@ -46,9 +45,9 @@ class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
 			@Override
 			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				Account account = accountRepository.findByUsername(username);
-				if(account != null) {
-					return new User(account.getUsername(), account.getPassword(), true, true, true, true,
+				Member member = memberRepository.findByUsername(username);
+				if(member != null) {
+					return new User(member.getUsername(), member.getPassword(), true, true, true, true,
 							AuthorityUtils.createAuthorityList("USER"));
 				} else {
 					throw new UsernameNotFoundException("could not find the user '"

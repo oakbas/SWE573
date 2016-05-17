@@ -46,9 +46,9 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/members/findbyusername/{username}", method = RequestMethod.GET)
-    public String getMemberByUsername(@PathVariable("username") String username) {
+    public Member getMemberByUsername(@PathVariable("username") String username) {
         Member member = memberService.findMemberUsername(username);
         //Todo: Exception
-        return member.getPassword();
+        return member;
     }
 }
