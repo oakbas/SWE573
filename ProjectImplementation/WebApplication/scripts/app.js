@@ -107,9 +107,6 @@ angular.module('BasicHttpAuth', [
 
             // keep user logged in after page refresh
             $rootScope.globals = $cookieStore.get('globals') || {};
-            if ($rootScope.globals.currentUser) {
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-            }
 
             $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
@@ -119,35 +116,6 @@ angular.module('BasicHttpAuth', [
                         $location.path('/registration');
                     }
                     else if ($location.path() == '/products') {
-
-                        $location.path('/products');
-                    }
-                    else if ($location.path() !== '/registration'){
-                        $location.path('/login');
-                    }
-                }
-
-                else if ($rootScope.globals.currentUser.role.roleName !== "admin") {
-                    if($location.path() == '/admin'){
-                        window.alert('Admin degilsiniz');
-                        $location.path('/products');
-                    }
-                }
-
-                if ($rootScope.globals.currentUser.role.roleName == "nonmember") {
-                    if($location.path() == '/userinfo'){
-                        window.alert('Uye degilsiniz');
-                        $location.path('/products');
-                    }
-                    else if($location.path() == '/volunteer'){
-                        window.alert('Uye degilsiniz');
-                        $location.path('/products');
-                    }
-
-                    else if ($location.path() == '/registration') {
-                        $location.path('/registration');
-                    }
-                    else if ($location.path() == '/products'){
                         $location.path('/products');
                     }
 
@@ -163,9 +131,25 @@ angular.module('BasicHttpAuth', [
                         $location.path('/producer');
                     }
 
-                    else{
-                        $location.path('/login')
+                    else if ($location.path() == '/userinfo'){
+                        window.alert('Uye degilsiniz');
+                        $location.path('/products');
+                    }
+
+                    else if ($location.path() == '/volunteer'){
+                        window.alert('Uye degilsiniz');
+                        $location.path('/products');
                     }
                 }
+
+                else {
+                    if ($rootScope.globals.currentUser.role.roleName !== "admin"){
+                        if($location.path() == '/admin'){
+                            window.alert('Admin degilsiniz');
+                            $location.path('/products');
+                        }
+                    }
+                }
+
             });
         }]);
