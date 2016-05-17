@@ -14,4 +14,6 @@ import java.util.List;
 public interface MemberRepository extends CrudRepository<Member, Integer> {
 
     List<Member> findByMembership(Boolean membership);
+
+    Member findByUsername(String username);
 }

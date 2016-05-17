@@ -40,4 +40,9 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Iterable<Member> listMembersForApprove() { return memberRepository.findByMembership(false); }
+
+    @Override
+    public Member findMemberUsername(String username) {
+        return memberRepository.findByUsername(username);
+    }
 }

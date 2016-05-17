@@ -15,4 +15,6 @@ public interface MemberService {
     void updateMember(int id, Member newMember);
 
     Iterable<Member> listMembersForApprove();
+
+    Member findMemberUsername(String username);
 }

@@ -44,4 +44,11 @@ public class MemberController {
     public void updateMember(@PathVariable("id") int id, @RequestBody Member newMember) {
         memberService.updateMember(id, newMember);
     }
+
+    @RequestMapping(value = "/members/findbyusername/{username}", method = RequestMethod.GET)
+    public String getMemberByUsername(@PathVariable("username") String username) {
+        Member member = memberService.findMemberUsername(username);
+        //Todo: Exception
+        return member.getPassword();
+    }
 }
