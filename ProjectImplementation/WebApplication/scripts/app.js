@@ -118,8 +118,53 @@ angular.module('BasicHttpAuth', [
                     if ($location.path() == '/registration') {
                         $location.path('/registration');
                     }
+                    else if ($location.path() == '/products') {
+
+                        $location.path('/products');
+                    }
                     else if ($location.path() !== '/registration'){
                         $location.path('/login');
+                    }
+                }
+
+                else if ($rootScope.globals.currentUser.role.roleName !== "admin") {
+                    if($location.path() == '/admin'){
+                        window.alert('Admin degilsiniz');
+                        $location.path('/products');
+                    }
+                }
+
+                if ($rootScope.globals.currentUser.role.roleName == "nonmember") {
+                    if($location.path() == '/userinfo'){
+                        window.alert('Uye degilsiniz');
+                        $location.path('/products');
+                    }
+                    else if($location.path() == '/volunteer'){
+                        window.alert('Uye degilsiniz');
+                        $location.path('/products');
+                    }
+
+                    else if ($location.path() == '/registration') {
+                        $location.path('/registration');
+                    }
+                    else if ($location.path() == '/products'){
+                        $location.path('/products');
+                    }
+
+                    else if ($location.path() == '/producers'){
+                        $location.path('/producers');
+                    }
+
+                    else if ($location.path() == '/product'){
+                        $location.path('/product');
+                    }
+
+                    else if ($location.path() == '/producer'){
+                        $location.path('/producer');
+                    }
+
+                    else{
+                        $location.path('/login')
                     }
                 }
             });

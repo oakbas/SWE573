@@ -11,13 +11,13 @@ angular.module('Authentication')
             function ($http, $cookieStore, $rootScope, Base64, $timeout) {
                 var service = {};
 
-                service.Login = function (username, password, callback) {
+                service.firstLogin = function (username, password, callback) {
 
                     var authdata = Base64.encode(username + ':' + password);
 
                     $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
-                    $http.get($rootScope.serverURL + "products", {headers: { 'Content-Type': 'application/json'
+                    $http.get($rootScope.serverURL + "members/findbyusername/" + username, {headers: { 'Content-Type': 'application/json'
                         }})
                         .then(function(response) {
                             callback(response);
@@ -25,14 +25,25 @@ angular.module('Authentication')
                         });
                 };
 
-                service.SetCredentials = function (username, password) {
+                service.Login = function (username, password, callback) {
+
+                    $http.get($rootScope.serverURL + "members/findbyusername/" + username, {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
+                service.SetCredentials = function (username, password, role) {
 
                     var authdata = Base64.encode(username + ':' + password);
 
                     $rootScope.globals = {
                         currentUser: {
                             username: username,
-                            authdata: authdata
+                            authdata: authdata,
+                            role: role,
                         }
                     };
 
