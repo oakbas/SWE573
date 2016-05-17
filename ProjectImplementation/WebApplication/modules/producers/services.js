@@ -29,6 +29,16 @@ angular.module('Producers')
                         });
                 };
 
+                service.getProducerProducts = function (producerId, callback) {
+
+                    $http.get($rootScope.serverURL + "producerproducts/" + producerId, {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 return service;
             }])
 

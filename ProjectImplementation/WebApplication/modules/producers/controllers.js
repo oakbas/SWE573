@@ -46,11 +46,16 @@ angular.module('Producers', ['ngMap'])
                     $scope.data = {
                         producerInfo: null,
                         imagePlace: null,
+                        productList: [],
                     }
 
                     $scope.init = function() {
                         $scope.data.producerInfo = ProducerCommonService.getSelectedProducer();
-                        $scope.data.imagePlace = $rootScope.serverURL + "images/producers/" + $scope.data.producerInfo.photoURL;
+                        ProducersService.getProducerProducts($scope.data.producerInfo.id,function(response){
+                            if(response.status == '200'){
+                                $scope.data.productList = response.data;
+                            }
+                        });
                     }
 
                     $scope.init();
