@@ -34,8 +34,9 @@
             <br>
             <div class="col-sm-3">
                 <div>
+                    <div ng-show="data.sellValidation" class="alert alert-danger">{{data.errorMsg}}</div>
                     <label for="sellAmount">Miktar*</label>
-                    <input type="text" name="sellAmount" id="sellAmount" class="form-control" ng-model="sellAmount" required />
+                    <input type="number" name="sellAmount" id="sellAmount" class="form-control" ng-model="sellAmount" required />
                     <span ng-show="form.sellAmount.$dirty && form.sellAmount.$error.required" class="help-block">Miktari Girmeniz Gerekmektedir</span>
                 </div>
                 <br>
@@ -79,7 +80,7 @@
             </div>
             <div class="col-sm-3">
                 <label for="memberId">Alici Uye Id'si</label>
-                <input type="text" name="memberId" id="memberId" class="form-control" ng-model="memberId"/>
+                <input type="number" name="memberId" id="memberId" class="form-control" ng-model="memberId"/>
             </div>
             <div class="col-sm-3">
                 <label>Dogrula</label>

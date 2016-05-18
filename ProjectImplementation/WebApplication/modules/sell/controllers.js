@@ -21,6 +21,7 @@ angular.module('Sell')
                                 discount: 0.10,
                                 verified: false,
                                 producerList: [],
+                                sellValidation:false,
                 }
 
                 $scope.init = function() {
@@ -42,12 +43,18 @@ angular.module('Sell')
 
                 $scope.addToList = function (amount) {
                     if (!$scope.data.selectedRadio){
-                        //Todo: error msg adding
-                        console.log('bir sey secmelisin');
+                        $scope.data.errorMsg = "Bir sey secmelisin";
+                        $scope.data.sellValidation = true;
+
                     }
                     else if (amount > $scope.data.selectedRadio.unitAmount){
-                        //Todo: error msg adding
-                        console.log('secilen miktar stoktan fazla');
+                        $scope.data.errorMsg = "Stok miktarini kontrol et";
+                        $scope.data.sellValidation = true;
+
+                    }
+                    else if (amount < 0){
+                        $scope.data.errorMsg = "Stok miktarini kontrol et";
+                        $scope.data.sellValidation = true;
                     }
                     else{
                         var soldPrice = amount * $scope.data.selectedRadio.price;
