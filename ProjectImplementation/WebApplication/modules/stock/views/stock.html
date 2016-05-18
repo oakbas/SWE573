@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label for="amount">Miktari*</label>
-                    <input type="text" name="amount" id="amount" class="form-control" ng-model="amount" required />
+                    <input type="number" name="amount" id="amount" class="form-control" ng-model="amount" required />
                     <span ng-show="form.amount.$dirty && form.amount.$error.required" class="help-block"></span>
                 </div>
                 <div class="col-sm-2">
@@ -52,12 +52,12 @@
                 </div>
                 <div class="col-sm-2">
                     <label for="unitPrice">Birim Fiyati*</label>
-                    <input type="text" name="unitPrice" id="unitPrice" class="form-control" ng-model="unitPrice" required />
+                    <input type="number" name="unitPrice" id="unitPrice" class="form-control" ng-model="unitPrice" required />
                     <span ng-show="form.unitPrice.$dirty && form.unitPrice.$error.required" class="help-block"></span>
                 </div>
                 <div class="col-sm-2">
                     <label for="stockAmount">Stok Miktari*</label>
-                    <input type="text" name="stockAmount" id="stockAmount" class="form-control" ng-model="stockAmount" required />
+                    <input type="number" name="stockAmount" id="stockAmount" class="form-control" ng-model="stockAmount" required />
                     <span ng-show="form.stockAmount.$dirty && form.stockAmount.$error.required" class="help-block"></span>
                 </div>
             </div>
