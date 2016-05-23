@@ -7,8 +7,8 @@
 angular.module('Userinfo', ['googlechart'])
 
     .controller('UserinfoController',
-        ['$scope', 'UserinfoService', 'AuthenticationService',
-            function ($scope, UserinfoService, AuthenticationService) {
+        ['$scope', '$rootScope','UserinfoService', 'AuthenticationService',
+            function ($scope, $rootScope, UserinfoService, AuthenticationService) {
 
                 $scope.data = {
                     memberInfo: null,
@@ -21,7 +21,7 @@ angular.module('Userinfo', ['googlechart'])
                 $scope.categoryChartObject = {};
                 
                 $scope.init = function () {
-                    UserinfoService.getMember(1,function(response){
+                    UserinfoService.getMember($rootScope.globals.currentUser.memberId,function(response){
                         if(response.status == '200'){
                             $scope.data.memberInfo = response.data;
                             $scope.data.boughtProductList = response.data.soldProductList;

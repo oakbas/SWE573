@@ -21,12 +21,13 @@ angular.module('Authentication')
                         });
                 };
 
-                service.SetCredentials = function (username, password, role) {
+                service.SetCredentials = function (username, memberId, role) {
 
                     $rootScope.globals = {
                         currentUser: {
                             username: username,
                             role: role,
+                            memberId: memberId,
                         }
                     };
 

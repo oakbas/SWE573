@@ -19,6 +19,16 @@ angular.module('Volunteer')
                         });
                 };
 
+                service.getAllVolunteerworks = function (callback) {
+
+                    $http.get($rootScope.serverURL + "volunteerworks", {headers: { 'Content-Type': 'application/json'
+                        }})
+                        .then(function(response) {
+                            callback(response);
+                            return response.data;
+                        });
+                };
+
                 service.getAllWorkTypes = function (callback) {
 
                     $http.get($rootScope.serverURL + "worktypes", {headers: { 'Content-Type': 'application/json'

@@ -16,7 +16,7 @@ angular.module('Authentication')
                     AuthenticationService.Login($scope.username, $scope.password, function (response) {
                         if (response.data != "") {
                             if (response.data.password == $scope.password) {
-                                AuthenticationService.SetCredentials($scope.username, $scope.password, response.data.role);
+                                AuthenticationService.SetCredentials($scope.username, response.data.id, response.data.role);
                                 $location.path('/products');
                             }
                         }

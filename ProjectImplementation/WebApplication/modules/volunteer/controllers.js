@@ -7,20 +7,27 @@
 angular.module('Volunteer')
 
     .controller('VolunteerController',
-        ['$scope', '$location', 'VolunteerService', 'AuthenticationService',
-            function ($scope, $location, VolunteerService, AuthenticationService) {
+        ['$scope', '$rootScope', '$location', 'VolunteerService', 'AuthenticationService',
+            function ($scope, $rootScope, $location, VolunteerService, AuthenticationService) {
 
                 $scope.data = {
                     newsList: [],
                     currentDate: null,
                     selectedWork: null,
                     availableWorks: [],
+                    volunteerworkList: [],
                 }
                 
                 $scope.init = function () {
                     VolunteerService.getAllNews(function(response){
                         if(response.status == '200'){
                             $scope.data.newsList = response.data;
+                        }
+                    });
+
+                    VolunteerService.getAllVolunteerworks(function(response){
+                        if(response.status == '200'){
+                            $scope.data.volunteerworkList = response.data;
                         }
                     });
 
@@ -44,6 +51,14 @@ angular.module('Volunteer')
                     });
                 }
 
+                $scope.getAllVolunteerworks = function(){
+                    VolunteerService.getAllVolunteerworks(function(response){
+                        if(response.status == '200'){
+                            $scope.data.volunteerworkList = response.data;
+                        }
+                    });
+                }
+
                 $scope.addNews = function(){
                     var newsBodyContent = $scope.newsBody;
                     var newsData =  {
@@ -61,11 +76,11 @@ angular.module('Volunteer')
                     var workData =  {
                         workDate: $scope.workDate,
                         worktype: {id: $scope.data.selectedWork},
-                        member: {id: 1}
+                        member: {id: $rootScope.globals.currentUser.memberId}
                     }
                     VolunteerService.addVolunteerWork(workData, function (response) {
                         if(response.status == '200') {
-                            console.log("oldu");
+                            $scope.getAllVolunteerworks();
                         }
                     });
                 }
