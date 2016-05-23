@@ -102,7 +102,7 @@ angular.module('BasicHttpAuth', [
 
 
             // Local IP
-            $rootScope.serverURL = "http://127.0.0.1:8080/";
+            $rootScope.serverURL = "http://192.168.1.23:8080/";
 
 
             // keep user logged in after page refresh
@@ -138,6 +138,11 @@ angular.module('BasicHttpAuth', [
 
                     else if ($location.path() == '/volunteer'){
                         window.alert('Uye degilsiniz');
+                        $location.path('/products');
+                    }
+
+                    else if ($location.path() == '/admin'){
+                        window.alert('Admin degilsiniz');
                         $location.path('/products');
                     }
                 }

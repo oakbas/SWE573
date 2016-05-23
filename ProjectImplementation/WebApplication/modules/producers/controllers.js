@@ -7,8 +7,8 @@
 angular.module('Producers', ['ngMap'])
 
     .controller('ProducersController',
-        ['$scope', '$location', 'ProducersService', 'ProducerCommonService',
-            function ($scope, $location, ProducersService, ProducerCommonService) {
+        ['$scope', '$location', 'ProducersService', 'ProducerCommonService', 'AuthenticationService',
+            function ($scope, $location, ProducersService, ProducerCommonService, AuthenticationService) {
 
                 $scope.data = {
                     producerList: null,
@@ -35,6 +35,10 @@ angular.module('Producers', ['ngMap'])
                 $scope.setProducerDesc = function(producer) {
                     ProducerCommonService.setSelectedProducer(producer);
                     $location.path('/producer');
+                }
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
                 }
 
             }])

@@ -7,8 +7,8 @@
 angular.module('Product')
 
     .controller('ProductController',
-        ['$scope', '$location', 'ProductService', 'ProductCommonService',
-            function ($scope, $location, ProductService, ProductCommonService) {
+        ['$scope', '$location', 'ProductService', 'ProductCommonService', 'AuthenticationService',
+            function ($scope, $location, ProductService, ProductCommonService, AuthenticationService) {
 
                 $scope.data = {
                     productList: null,
@@ -49,6 +49,10 @@ angular.module('Product')
                         };
                     }
                 };
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
+                }
             }])
 
     .controller('ProductDescController',

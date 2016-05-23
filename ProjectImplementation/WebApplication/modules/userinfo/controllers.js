@@ -7,8 +7,8 @@
 angular.module('Userinfo', ['googlechart'])
 
     .controller('UserinfoController',
-        ['$scope', 'UserinfoService',
-            function ($scope, UserinfoService) {
+        ['$scope', 'UserinfoService', 'AuthenticationService',
+            function ($scope, UserinfoService, AuthenticationService) {
 
                 $scope.data = {
                     memberInfo: null,
@@ -94,5 +94,9 @@ angular.module('Userinfo', ['googlechart'])
                     $scope.categoryChartObject.options = {
                         'title': 'Urun Kategorisine Gore Alim Dagilimi'
                     };
+                }
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
                 }
             }]);

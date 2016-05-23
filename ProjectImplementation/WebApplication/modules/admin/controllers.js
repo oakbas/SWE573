@@ -7,8 +7,8 @@
 angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
 
     .controller('AdminController',
-        ['$scope', '$rootScope', 'AdminService',
-            function ($scope, $rootScope, AdminService) {
+        ['$scope', '$rootScope', 'AdminService', 'AuthenticationService',
+            function ($scope, $rootScope, AdminService, AuthenticationService) {
                 $scope.data = { memberList: [],
                                 producerList: [],
                 }
@@ -59,6 +59,10 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
                 $rootScope.$on("CallProducers", function(){
                     $scope.getAllProducers();
                 });
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
+                }
 
             }])
 

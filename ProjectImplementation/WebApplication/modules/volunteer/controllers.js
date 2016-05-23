@@ -7,8 +7,8 @@
 angular.module('Volunteer')
 
     .controller('VolunteerController',
-        ['$scope', '$location', 'VolunteerService',
-            function ($scope, $location, VolunteerService) {
+        ['$scope', '$location', 'VolunteerService', 'AuthenticationService',
+            function ($scope, $location, VolunteerService, AuthenticationService) {
 
                 $scope.data = {
                     newsList: [],
@@ -76,6 +76,10 @@ angular.module('Volunteer')
 
                 $scope.openStockPage = function(){
                     $location.path('/stock');
+                }
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
                 }
 
             }]);
