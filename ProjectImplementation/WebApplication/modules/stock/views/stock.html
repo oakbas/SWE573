@@ -1,7 +1,7 @@
 <h1>Stok Ekrani</h1>
 <span>Eklemek Istediginiz Urunu Giriniz</span>
 <div>
-    <form name="form" ng-submit="saveProduct()" role="form" ng-controller="StockController">
+    <form name="form" ng-submit="submit()" role="form" ng-controller="StockController">
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-2">
@@ -60,6 +60,16 @@
                     <input type="number" name="stockAmount" id="stockAmount" class="form-control" ng-model="stockAmount" required />
                     <span ng-show="form.stockAmount.$dirty && form.stockAmount.$error.required" class="help-block"></span>
                 </div>
+            </div>
+            <div class = "row">
+                <div class="col-sm-3">
+                    <label>Urunun resmini yukleyiniz:</label>
+                    <div class="btn btn-warning" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                         ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"
+                         ngf-resize="{width: 100, height: 100}">Yukle</div>
+                    <span>Yuklenen Dosya:</span> <img ngf-thumbnail="file">
+                </div>
+
             </div>
         </div>
         <div class="form-actions">

@@ -4,11 +4,11 @@
 
 'use strict';
 
-angular.module('Stock')
+angular.module('Stock', ['ui.bootstrap', 'ngFileUpload'])
 
     .controller('StockController',
-        ['$scope', '$rootScope', 'StockService',
-            function ($scope, $rootScope, StockService, ProductService) {
+        ['$scope', '$rootScope', 'StockService', 'ProductService', 'Upload',
+            function ($scope, $rootScope, StockService, ProductService, Upload) {
                 $scope.data = { unitTypes: [],
                                 selectedUnitType: null,
                                 packagingTypes: [],
@@ -63,6 +63,12 @@ angular.module('Stock')
                     });
                 }
 
+                $scope.submit = function() {
+                    if ($scope.form.file.$valid && $scope.file) {
+                        $scope.upload($scope.file);
+                    }
+                };
+
                 $scope.saveProduct = function(){
                     $scope.dataLoading = true;
                     var productData =  {
@@ -87,6 +93,43 @@ angular.module('Stock')
                             console.log("something is wrong");
                             $scope.dataLoading = false;
                         }
+                    });
+                }
+
+
+                // upload on file select or drop
+                $scope.upload = function (file) {
+                    $scope.dataLoading = true;
+                    var dataUrl;
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function (e) {
+                        dataUrl = e.target.result;
+                    };
+                    Upload.dataUrl(file, true).then(function (url) {
+                        var productData = {
+                            photoURL: dataUrl,
+                            productName: $scope.productName,
+                            producer: {id: $scope.data.selectedProducer},
+                            productFrom: $scope.productComeFrom,
+                            packagingType: {id: $scope.data.selectedPackagingType},
+                            unit: $scope.amount,
+                            unitType: {id: $scope.data.selectedUnitType},
+                            price: $scope.unitPrice,
+                            unitAmount: $scope.stockAmount,
+                            productcategory: {id: $scope.data.selectedCategory}
+                        }
+                        StockService.saveProduct(productData, function (response) {
+                            if(response.status == '200') {
+                                console.log("successful");
+                                $scope.dataLoading = false;
+
+                            }
+                            else{
+                                console.log("something is wrong");
+                                $scope.dataLoading = false;
+                            }
+                        });
                     });
                 }
 

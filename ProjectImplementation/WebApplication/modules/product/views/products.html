@@ -42,22 +42,22 @@
 <br>
 <div ng-repeat="item in data.productList | filter: filterCategory(data.catSelect) track by $index" ng-if="$index%3==0">
     <div class = "row">
-        <div class = "col-sm-4" ng-mouseover="open = true" ng-mouseleave="open = false">
-            <img src = "img/kecipeyniri.png" ng-show="data.productList[$index]" width="300" height="200"/>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index].photoURL}}" ng-show="data.productList[$index]" width="300" height="200"/>
             <h4>{{data.productList[$index].productName}}</h4>
             <span>{{data.productList[$index].producer.producerName}}</span>
             <br>
             <button ng-show="data.productList[$index]" class="btn btn-default" ng-click="setProductDesc(data.productList[$index+0])">Ayrintili Bilgi</button>
         </div>
-        <div class = "col-sm-4" ng-mouseover="open = true" ng-mouseleave="open = false">
-            <img src = "img/karsgravyer.png" ng-show="data.productList[$index+1]" width="300" height="200"/>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index+1].photoURL}}" ng-show="data.productList[$index+1]" width="300" height="200"/>
             <h4>{{data.productList[$index+1].productName}}</h4>
             <span>{{data.productList[$index+1].producer.producerName}}</span>
             <br>
             <button ng-show="data.productList[$index+1]" class="btn btn-default" ng-click="setProductDesc(data.productList[$index+1])">Ayrintili Bilgi</button>
         </div>
-        <div class = "col-sm-4" ng-mouseover="open = true" ng-mouseleave="open = false">
-            <img src = "img/noimage.png" ng-show="data.productList[$index+2]"/>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index+2].photoURL}}" ng-show="data.productList[$index+2]"/>
             <h4>{{data.productList[$index+2].productName}}</h4>
             <span>{{data.productList[$index+2].producer.producerName}}</span>
             <br>
