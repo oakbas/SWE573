@@ -29,6 +29,7 @@ public class Producer {
 
     private String producerPhone;
 
+    @Column(columnDefinition = "MEDIUMTEXT")
     public String photoURL;
 
     @Column(columnDefinition = "FLOAT(10,6)")
