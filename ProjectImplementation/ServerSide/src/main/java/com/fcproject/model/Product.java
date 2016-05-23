@@ -43,6 +43,9 @@ public class Product {
     @ManyToOne(optional = false)
     private Productcategory productcategory;
 
+    @Column(columnDefinition = "MEDIUMTEXT")
+    public String photoURL;
+
     @OneToMany(mappedBy = "product")
     private List<Comment> commentList;
 
@@ -85,4 +88,6 @@ public class Product {
     public void setUnitAmount(Float unitAmount) {
         this.unitAmount = unitAmount;
     }
+
+    public String getPhotoURL() { return photoURL; }
 }
