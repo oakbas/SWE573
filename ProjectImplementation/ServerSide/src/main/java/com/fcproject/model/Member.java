@@ -1,4 +1,5 @@
 package com.fcproject.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -41,6 +42,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<SoldProduct> soldProductList;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "member")
     private List<Volunteerwork> volunteerworkList;
 
@@ -72,11 +74,9 @@ public class Member {
 
     public Role getRole() { return role; }
 
-    public List<SoldProduct> getSoldProductList() {
-        return soldProductList;
-    }
-
-    public List<Volunteerwork> getVolunteerworkList() { return volunteerworkList; }
+    public List<SoldProduct> getSoldProductList() { return soldProductList; }
 
     public void setMembership(Boolean membership) { this.membership = membership; }
+
+    public List<Volunteerwork> getVolunteerworkList() { return volunteerworkList; }
 }

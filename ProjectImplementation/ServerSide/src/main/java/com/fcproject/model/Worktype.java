@@ -1,5 +1,7 @@
 package com.fcproject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Worktype {
 
     private String worktypeName;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "worktype")
     private List<Volunteerwork> volunteerworkList;
 
