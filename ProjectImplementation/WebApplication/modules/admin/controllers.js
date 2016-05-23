@@ -144,27 +144,32 @@ angular.module('Admin', ['ui.bootstrap', 'ngFileUpload'])
 
         // upload on file select or drop
         $scope.upload = function (file) {
-            Upload.upload({
-                url: $rootScope.serverURL + 'addProducer',
-                data: {
-                        file: file,
-                        producerName: $scope.producerName,
-                        producerDesc: $scope.producerDesc,
-                        producerCity: $scope.producerCity,
-                        producerAddress: $scope.producerAddress,
-                        producerPhone: $scope.producerPhone,
-                        producerLatitude: $scope.producerLatitude,
-                        producerLongitude: $scope.producerLongitude
-                },
-                headers: { 'Content-Type': 'application/json'
-                },
-            }).then(function (resp) {
-                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ');
+
+            var dataUrl;
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = function (e) {
+                dataUrl = e.target.result;
+            };
+            Upload.dataUrl(file, true).then(function(url){
+                var producerData =  {
+                    photoURL: dataUrl,
+                    producerName: $scope.producerName,
+                    producerDesc: $scope.producerDesc,
+                    producerCity: $scope.producerCity,
+                    producerAddress: $scope.producerAddress,
+                    producerPhone: $scope.producerPhone,
+                    producerLatitude: $scope.producerLatitude,
+                    producerLongitude: $scope.producerLongitude
+                }
+                AdminService.producerAdd(producerData, function (response) {
+                    if(response.status == '200') {
+                        console.log("successful");
+                    }
+                    else{
+                        console.log("something is wrong");
+                    }
+                });
             });
         };
 

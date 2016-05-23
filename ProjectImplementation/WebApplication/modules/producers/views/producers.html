@@ -35,21 +35,21 @@
 <div ng-repeat="item in data.producerList track by $index" ng-if="$index%3==0">
     <div class = "row">
         <div class = "col-sm-4">
-            <img src = "http://127.0.0.1:8080/images/producers/{{data.producerList[$index].photoURL}}" ng-show="data.producerList[$index]" width="300" height="200"/>
+            <img src = "{{data.producerList[$index].photoURL}}" ng-show="data.producerList[$index]" width="300" height="200"/>
             <h4>{{data.producerList[$index].producerName}}</h4>
             <span>{{data.producerList[$index].producerCity}}</span>
             <br>
             <button ng-show="data.producerList[$index]" class="btn btn-default" ng-click="setProducerDesc(data.producerList[$index+0])">Ayrintili Bilgi</button>
         </div>
         <div class = "col-sm-4">
-            <img src = "http://127.0.0.1:8080/images/producers/{{data.producerList[$index+1].photoURL}}" ng-show="data.producerList[$index+1]" width="300" height="200"/>
+            <img src = "{{data.producerList[$index+1].photoURL}}" ng-show="data.producerList[$index+1]" width="300" height="200"/>
             <h4>{{data.producerList[$index+1].producerName}}</h4>
             <span>{{data.producerList[$index+1].producerCity}}</span>
             <br>
             <button ng-show="data.producerList[$index+1]" class="btn btn-default" ng-click="setProducerDesc(data.producerList[$index+1])">Ayrintili Bilgi</button>
         </div>
         <div class = "col-sm-4">
-            <img src = "http://127.0.0.1:8080/images/producers/{{data.producerList[$index+2].photoURL}}" ng-show="data.producerList[$index+2]"/>
+            <img data-ng-src= "{{data.producerList[$index+2].photoURL}}" ng-show="data.producerList[$index+2]"/>
             <h4>{{data.producerList[$index+2].producerName}}</h4>
             <span>{{data.producerList[$index+2].producerCity}}</span>
             <br>
