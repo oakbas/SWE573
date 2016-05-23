@@ -56,8 +56,8 @@ angular.module('Product')
             }])
 
     .controller('ProductDescController',
-        ['$scope', '$location', 'ProductService', 'ProductCommonService',
-            function ($scope, $location, ProductService, ProductCommonService) {
+        ['$scope', '$rootScope', '$location', 'ProductService', 'ProductCommonService', 'AuthenticationService',
+            function ($scope, $rootScope , $location, ProductService, ProductCommonService, AuthenticationService) {
 
                 $scope.data = {
                     productInfo: null,
@@ -95,17 +95,28 @@ angular.module('Product')
                 }
 
                 $scope.addComment = function(){
-                    var commentData =  {
-                        username: "uretici",
-                        body: $scope.commentBody,
-                        product: {id: $scope.data.productInfo.id},
+
+                    if (!$rootScope.globals.currentUser){
+                        window.alert("Yorum yapabilmek icin uye olmalisiniz");
                     }
 
-                    ProductService.submitComment(commentData, function (response) {
-                        if(response.status == '200') {
-                            $scope.getProductById();
+                    else{
+                        var commentData =  {
+                            username: $rootScope.globals.currentUser.username,
+                            body: $scope.commentBody,
+                            product: {id: $scope.data.productInfo.id},
                         }
-                    });
+
+                        ProductService.submitComment(commentData, function (response) {
+                            if(response.status == '200') {
+                                $scope.getProductById();
+                            }
+                        });
+                    }
+                }
+
+                $scope.logout = function(){
+                    AuthenticationService.ClearCredentials();
                 }
 
             }]);

@@ -44,8 +44,8 @@ angular.module('Producers', ['ngMap'])
             }])
 
         .controller('ProducerDescController',
-            ['$scope', '$rootScope', '$location', 'ProducersService', 'ProducerCommonService',
-                function ($scope, $rootScope, $location, ProducersService, ProducerCommonService) {
+            ['$scope', '$rootScope', '$location', 'ProducersService', 'ProducerCommonService', 'AuthenticationService',
+                function ($scope, $rootScope, $location, ProducersService, ProducerCommonService, AuthenticationService) {
 
                     $scope.data = {
                         producerInfo: null,
@@ -63,5 +63,9 @@ angular.module('Producers', ['ngMap'])
                     }
 
                     $scope.init();
+
+                    $scope.logout = function(){
+                        AuthenticationService.ClearCredentials();
+                    }
 
                 }]);
