@@ -149,10 +149,4 @@ angular.module('Stock', ['ui.bootstrap', 'ngFileUpload'])
 
                 });
 
-                $scope.deleteSelected = function(){
-                    //Todo: Add Delete Flag Attribute From Server Side, and set flag true
-                    //Show selected product
-                    console.log($scope.data.selectedRadio.id);
-                }
-
             }]);
