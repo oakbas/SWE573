@@ -19,6 +19,10 @@ angular.module('Authentication')
                                 AuthenticationService.SetCredentials($scope.username, response.data.id, response.data.role);
                                 $location.path('/products');
                             }
+                            else {
+                                $scope.error = "Hatali kullanici";
+                                $scope.dataLoading = false;
+                            }
                         }
                         else {
                             $scope.error = "Hatali kullanici";
