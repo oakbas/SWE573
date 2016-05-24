@@ -22,7 +22,7 @@ angular.module('Registration')
                                     email: $scope.emailAddress,
                                     bio: $scope.bio,
                                     password: $scope.password,
-                                    role: {id: 1}
+                                    role: {id: 2}
                                   }
                     RegistrationService.submit(memberData, function (response) {
                         if(response.status == '200') {
