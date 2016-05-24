@@ -85,7 +85,7 @@
             <tbody>
             <tr ng-repeat="p in data.volunteerworkList | filter:searchText" ng-class-odd="'alt'">
                 <td class="col-xs-1">{{p.worktype.worktypeName}}</td>
-                <td class="col-xs-1">{{p.workDate}}</td>
+                <td class="col-xs-1">{{p.workDate | date: 'dd-MM-yyyy'}}</td>
                 <td class="col-xs-1">{{p.member.username}}</td>
             </tr>
             </tbody>
