@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Gonullu Calismalar
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login" class="glyphicon glyphicon-log-out" ng-click="logout()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/admin">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/userinfo">Uye Sayfasi</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class = "row">
+    <div class = "col-sm-4">
+        <h4 class="glyphicon glyphicon-bell">Duyurular</h4>
+        <label>Duyurularda Ara: <input ng-model="searchText"></label>
+        <br>
+        <table class=" table table-response" style="background: #fbeed5">
+            <thead>
+            <tr>
+                <th class="col-xs-2">Icerik</th>
+                <th class="col-xs-1">Tarih</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="news in data.newsList | filter:searchText" ng-class-odd="'alt'">
+                <td class="col-xs-2">{{news.newsBody}}</td>
+                <td class="col-xs-1">{{ news.dueDate | date: 'dd-MM-yyyy' }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <form name="form" ng-submit="addNews()" role="form">
+            <div class = "row">
+                <div class="col-sm-6">
+                    <label for="newsBody">Yeni Duyuru Ekle</label>
+                    <input type="text" name="newsBody" id="newsBody" class="form-control" ng-model="newsBody" required />
+                    <span ng-show="form.newsBody.$dirty && form.newsBody.$error.required" class="help-block">Duyuru yazmaniz gerekmektedir</span>
+                </div>
+                <div class="col-sm-6">
+                    <label for="dueDate">Tarih Seciniz:</label>
+                    <input type="date" id="dueDate" name="dueDate" ng-model="dueDate" placeholder="yyyy-MM-dd" required />
+                    <span ng-show="form.dueDate.$dirty && form.dueDate.$error.required" class="help-block">Tarih girmeniz gerekmektedir</span>
+                </div>
+                <br>
+            </div>
+            <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Yolla</button>
+            </div>
+        </form>
+    </div>
+    <div class = "col-sm-4">
+        <h4>Gonullu Isler Katilim Listesi</h4>
+        <label>Gonullu islerde ara: <input ng-model="searchText"></label>
+        <br>
+        <table class=" table table-response" style="background: #feffff">
+            <thead>
+            <tr>
+                <th class="col-xs-1">Is Cesidi</th>
+                <th class="col-xs-1">Tarih</th>
+                <th class="col-xs-1">Yapacak Uye</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="p in data.volunteerworkList | filter:searchText" ng-class-odd="'alt'">
+                <td class="col-xs-1">{{p.worktype.worktypeName}}</td>
+                <td class="col-xs-1">{{p.workDate | date: 'dd-MM-yyyy'}}</td>
+                <td class="col-xs-1">{{p.member.username}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class = "col-sm-4">
+        <h4>Gonullu Calismaya Katil</h4>
+        <form name="form" role="form">
+            <div class = "row">
+                <div class="col-sm-6">
+                    <label for="workDate">Tarih Seciniz:</label>
+                    <input type="date" id="workDate" name="workDate" ng-model="workDate" placeholder="yyyy-MM-dd" required />
+                    <span ng-show="form.workDate.$dirty && form.workDate.$error.required" class="help-block">Tarih girmeniz gerekmektedir</span>
+                </div>
+                <br>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="workSelect"> Uygun Isler: </label>
+                    <select name="workSelect" id="workSelect" ng-model="data.selectedWork">
+                        <option ng-repeat="option in data.availableWorks" value="{{option.id}}">{{option.worktypeName}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" ng-disabled="form.$invalid" ng-click="addVolunteerWork()">Yolla</button>
+        </form>
+        <br>
+        <button type="button" class="btn btn-primary" ng-click = "openSellPage()">Satis Ekranina Git</button>
+        <button type="button" class="btn btn-primary" ng-click = "openStockPage()">Stok Ekranina Git</button>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Urunler
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login" class="glyphicon glyphicon-log-out" ng-click="logout()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/admin">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/userinfo">Uye Sayfasi</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-sm-3">
+        <label for="catSelect"> Kategoriler: </label>
+        <select name="catSelect" id="catSelect" ng-model="data.catSelect">
+            <option ng-repeat="option in data.categories" value="{{option.id}}">{{option.categoryName}}</option>
+        </select>
+    </div>
+</div>
+<br>
+<div ng-repeat="item in data.productList | filter: filterCategory(data.catSelect) track by $index" ng-if="$index%3==0">
+    <div class = "row">
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index].photoURL}}" ng-show="data.productList[$index]" width="300" height="200"/>
+            <h4>{{data.productList[$index].productName}}</h4>
+            <span>{{data.productList[$index].producer.producerName}}</span>
+            <br>
+            <button ng-show="data.productList[$index]" class="btn btn-default" ng-click="setProductDesc(data.productList[$index+0])">Ayrintili Bilgi</button>
+        </div>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index+1].photoURL}}" ng-show="data.productList[$index+1]" width="300" height="200"/>
+            <h4>{{data.productList[$index+1].productName}}</h4>
+            <span>{{data.productList[$index+1].producer.producerName}}</span>
+            <br>
+            <button ng-show="data.productList[$index+1]" class="btn btn-default" ng-click="setProductDesc(data.productList[$index+1])">Ayrintili Bilgi</button>
+        </div>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.productList[$index+2].photoURL}}" ng-show="data.productList[$index+2]"/>
+            <h4>{{data.productList[$index+2].productName}}</h4>
+            <span>{{data.productList[$index+2].producer.producerName}}</span>
+            <br>
+            <button ng-show="data.productList[$index+2]" class="btn btn-default" ng-click="setProductDesc(data.productList[$index+2])">Ayrintili Bilgi</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

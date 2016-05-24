@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Ayrintili Urun Sayfasi
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login" class="glyphicon glyphicon-log-out" ng-click="logout()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/admin">Admin</a></li>
+        </ul>
+    </div>
+</nav>
+<h3>
+    {{data.productInfo.productName}}
+</h3>
+<div class="row">
+    <div class = "col-sm-6">
+        <img data-ng-src= "{{data.productInfo.photoURL}}" width="300" height="200"/>
+    </div>
+    <div class = "col-sm-6">
+        <h2>Urun Bilgileri</h2>
+        <div class="row">
+            <span>Uretici: {{data.productInfo.producer.producerName}}</span>
+        </div>
+        <div class="row">
+        <span>Gelis Yeri: {{data.productInfo.productFrom}}</span>
+        </div>
+        <div class="row">
+        <span>Paketlenme Sekli: {{data.productInfo.packagingType.packagingName}}</span>
+        </div>
+        <div class="row">
+        <span>Birimi: {{data.productInfo.price}}TL</span>
+        </div>
+    </div>
+</div>
+<br>
+<div class = "row">
+    <form name="form" role="form">
+        <div class = "row">
+            <div class="col-sm-6">
+                <label for="commentBody">Yorum Yaz</label>
+                <input type="text" name="commentBody" id="commentBody" class="form-control" ng-model="commentBody" required />
+                <span ng-show="form.commentBody.$dirty && form.commentBody.$error.required" class="help-block">Yorum yazmaniz gerekmektedir</span>
+            </div>
+        </div>
+    <button class="btn btn-primary" type="button" ng-disabled="form.commentBody.$error.required" ng-click="addComment()">Yolla</button>
+    </form>
+</div>
+<div class="row">
+    <br>
+    <h3>Yorumlar</h3>
+    <div ng-repeat="comment in data.productInfo.commentList track by $index" ng-class-odd="'alt'">
+        <h4>{{$index+1}}.{{comment.username}}</h4>
+        <span>{{comment.body}}</span>
+        <br>
+    </div>
+</div>
+
+</body>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="productsPage()">Urunlere Geri Don</button>
+</div>
+</html>

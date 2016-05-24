@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Ureticilerimiz
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login" class="glyphicon glyphicon-log-out" ng-click="logout()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/admin">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/userinfo">Uye Sayfasi</a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+<div ng-repeat="item in data.producerList track by $index" ng-if="$index%3==0">
+    <div class = "row">
+        <div class = "col-sm-4">
+            <img data-ng-src = "{{data.producerList[$index].photoURL}}" ng-show="data.producerList[$index]" width="300" height="200"/>
+            <h4>{{data.producerList[$index].producerName}}</h4>
+            <span>{{data.producerList[$index].producerCity}}</span>
+            <br>
+            <button ng-show="data.producerList[$index]" class="btn btn-default" ng-click="setProducerDesc(data.producerList[$index+0])">Ayrintili Bilgi</button>
+        </div>
+        <div class = "col-sm-4">
+            <img data-ng-src = "{{data.producerList[$index+1].photoURL}}" ng-show="data.producerList[$index+1]" width="300" height="200"/>
+            <h4>{{data.producerList[$index+1].producerName}}</h4>
+            <span>{{data.producerList[$index+1].producerCity}}</span>
+            <br>
+            <button ng-show="data.producerList[$index+1]" class="btn btn-default" ng-click="setProducerDesc(data.producerList[$index+1])">Ayrintili Bilgi</button>
+        </div>
+        <div class = "col-sm-4">
+            <img data-ng-src= "{{data.producerList[$index+2].photoURL}}" ng-show="data.producerList[$index+2]"/>
+            <h4>{{data.producerList[$index+2].producerName}}</h4>
+            <span>{{data.producerList[$index+2].producerCity}}</span>
+            <br>
+            <button ng-show="data.producerList[$index+2]" class="btn btn-default" ng-click="setProducerDesc(data.producerList[$index+2])">Ayrintili Bilgi</button>
+        </div>
+    </div>
+</div>

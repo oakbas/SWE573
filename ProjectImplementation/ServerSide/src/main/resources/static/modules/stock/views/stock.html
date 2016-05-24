@@ -1,0 +1,116 @@
+<h1>Stok Ekrani</h1>
+<span>Eklemek Istediginiz Urunu Giriniz</span>
+<div>
+    <form name="form" ng-submit="submit()" role="form" ng-controller="StockController">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="productName">Urun Ismi*</label>
+                    <input type="text" name="productName" id="productName" class="form-control" ng-model="productName" required />
+                    <span ng-show="form.productName.$dirty && form.productName.$error.required" class="help-block"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label for="producerSelect"> Uretici Ismi: </label>
+                    <br>
+                    <select name="producerSelect" id="producerSelect" ng-model="data.selectedProducer">
+                        <option ng-repeat="producer in data.producerList" value="{{producer.id}}">{{producer.producerName}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="productComeFrom">Urunun Gelis Yeri*</label>
+                    <input type="text" name="productComeFrom" id="productComeFrom" class="form-control" ng-model="productComeFrom" required />
+                    <span ng-show="form.productComeFrom.$dirty && form.productComeFrom.$error.required" class="help-block"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label for="packagingSelect"> Paketlenme Sekli: </label>
+                    <br>
+                    <select name="packagingSelect" id="packagingSelect" ng-model="data.selectedPackagingType">
+                        <option ng-repeat="packaging in data.packagingTypes" value="{{packaging.id}}">{{packaging.packagingName}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="catSelect"> Urun Kategorisi</label>
+                    <br>
+                    <select name="catSelect" id="catSelect" ng-model="data.selectedCategory">
+                        <option ng-repeat="category in data.categories" value="{{category.id}}">{{category.categoryName}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="amount">Miktari*</label>
+                    <input type="number" name="amount" id="amount" class="form-control" ng-model="amount" required />
+                    <span ng-show="form.amount.$dirty && form.amount.$error.required" class="help-block"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label for="unitSelect"> Birim: </label>
+                    <br>
+                    <select name="unitSelect" id="unitSelect" ng-model="data.selectedUnitType">
+                        <option ng-repeat="unit in data.unitTypes" value="{{unit.id}}">{{unit.unitName}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="unitPrice">Birim Fiyati*</label>
+                    <input type="number" name="unitPrice" id="unitPrice" class="form-control" ng-model="unitPrice" required />
+                    <span ng-show="form.unitPrice.$dirty && form.unitPrice.$error.required" class="help-block"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label for="stockAmount">Stok Miktari*</label>
+                    <input type="number" name="stockAmount" id="stockAmount" class="form-control" ng-model="stockAmount" required />
+                    <span ng-show="form.stockAmount.$dirty && form.stockAmount.$error.required" class="help-block"></span>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-sm-3">
+                    <label>Urunun resmini yukleyiniz:</label>
+                    <div class="btn btn-warning" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                         ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"
+                         ngf-resize="{width: 100, height: 100}">Yukle</div>
+                    <span>Yuklenen Dosya:</span> <img ngf-thumbnail="file">
+                </div>
+
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Stoga Ekle</button>
+            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+        <br>
+        <br>
+        <label>Stokta Ara: <input ng-model="searchText"></label>
+        <br>
+        <table class=" table table-response" style="background: #feffff">
+            <thead>
+            <tr>
+                <th class="col-xs-1"></th>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-1">Urun Ismi</th>
+                <th class="col-xs-1">Uretici Ismi</th>
+                <th class="col-xs-1">Gelis Yeri</th>
+                <th class="col-xs-1">Paketlenme Sekli</th>
+                <th class="col-xs-1">Birim Miktari</th>
+                <th class="col-xs-1">Birim</th>
+                <th class="col-xs-1">Birim Fiyati</th>
+                <th class="col-xs-1">Stok Miktari</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="p in data.productList | filter:searchText" ng-class-odd="'alt'">
+                <td class="col-xs-1">
+                    <input type="radio" ng-model="$parent.data.selectedRadio" name="name" ng-value="p" ng-change="$parent.radioProductSelected(p)">
+                </td>
+                <td class="col-xs-1">{{p.id}}</td>
+                <td class="col-xs-1">{{p.productName}}</td>
+                <td class="col-xs-1">{{p.producer.producerName}}</td>
+                <td class="col-xs-1">{{p.productFrom}}</td>
+                <td class="col-xs-1">{{p.packagingType.packagingName}}</td>
+                <td class="col-xs-1">{{p.unit}}</td>
+                <td class="col-xs-1">{{p.unitType.unitName}}</td>
+                <td class="col-xs-1">{{p.price}}</td>
+                <td class="col-xs-1">{{p.unitAmount}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

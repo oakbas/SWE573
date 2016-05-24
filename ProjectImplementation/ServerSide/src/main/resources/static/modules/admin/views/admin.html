@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    <div>
+        <img src="img/logo-small.png">Admin Sayfasi
+    </div>
+</h1>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand"></a>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login" class="glyphicon glyphicon-log-out" ng-click="logout()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/producers">Ureticiler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/products">Urunler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/volunteer">Gonullu Calismalar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/admin">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/userinfo">Uye Sayfasi</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class = "row">
+    <h3>Uye Onayla</h3>
+    <div class="col-sm-9">
+        <table class=" table table-response" style="background: #feffff">
+            <thead>
+            <tr>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-1">Uye Ismi</th>
+                <th class="col-xs-1">Onayla</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="member in data.memberList" ng-class-odd="'alt'">
+                <td class="col-xs-1">{{member.id}}</td>
+                <td class="col-xs-1">{{member.firstname}} {{member.surname}}</td>
+                <td class="col-xs-1">
+                    <button class="btn btn-warning" type="button" ng-click="approveMember(member)">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class = "row">
+    <h3>Uretici Listesi</h3>
+    <div class="col-sm-9">
+        <table class=" table table-response" style="background: #feffff">
+            <thead>
+            <tr>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-1">Uretici Ismi</th>
+                <th class="col-xs-1">Guncelle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="producer in data.producerList" ng-class-odd="'alt'">
+                <td class="col-xs-1">{{producer.id}}</td>
+                <td class="col-xs-1">{{producer.producerName}}</td>
+                <td class="col-xs-1">
+                    <button class="glyphicon glyphicon-pencil btn btn-warning btn-xs" ng-controller="ModalController" ng-click="openUpdateProducerModal(producer)"></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-primary" ng-controller="ModalController" ng-click = "openNewProducerModal()">Uretici Ekle</button>
+</div>
+
+</body>
+</html>

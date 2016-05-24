@@ -1,0 +1,65 @@
+<h1>Kayit Bilgileri</h1>
+<span>Lutfen Bilgileri Doldurunuz!</span>
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<div>
+
+    <form name="form" ng-submit="submit()" role="form" ng-controller="RegistrationController">
+        <div ng-show="data.registrationValid" class="alert alert-info">{{data.errorMsg}}</div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="firstname">Isim*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="firstname" id="firstname" class="form-control" ng-model="firstname" required />
+                    <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Isminizi girmeniz gerekmektedir.</span>
+                </div>
+                <div class="col-sm-4">
+                    <label for="surname">Soyisim*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="surname" id="surname" class="form-control" ng-model="surname" required />
+                    <span ng-show="form.surname.$dirty && form.surname.$error.required" class="help-block">Soyisminizi girmeniz gerekmektedir.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="username">Kullanici Adi*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+                    <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Kullanici adinizi girmeniz gerekmektedir.</span>
+                </div>
+                <div class="col-sm-4">
+                    <label for="password">Parola*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                    <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Parola girmeniz gerekmektedir.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="emailAddress">EmailAddress*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="emailAddress" id="emailAddress" class="form-control" ng-model="emailAddress" required />
+                    <span ng-show="form.emailAddress.$dirty && form.emailAddress.$error.required" class="help-block">Epostanizi girmeniz gerekmektedir.</span>
+                    <span>@boun.edu.tr uzantili olmalidir</span>
+                </div>
+                <div class="col-sm-4">
+                    <label for="phone">Phone*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="phone" id="phone" class="form-control" ng-model="phone" required />
+                    <span ng-show="form.phone.$dirty && form.phone.$error.required" class="help-block">Telefon numaranizi girmeniz gerekmektedir.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <label for="bio">Bio*</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="bio" id="bio" class="form-control" ng-model="bio"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Kaydet</button>
+            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+    </form>
+</div>

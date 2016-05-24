@@ -1,0 +1,96 @@
+<h1>Satis Ekrani</h1>
+<div>
+    <form name="form" ng-submit="" role="form" ng-controller="SellController">
+        <div class="row" >
+            <div class="col-sm-9">
+                <label>Stokta Ara: <input ng-model="searchText"></label>
+                <br>
+                <table class=" table table-response" style="background: #feffff">
+                    <thead>
+                    <tr>
+                        <th class="col-xs-1">Sec</th>
+                        <th class="col-xs-1">Id</th>
+                        <th class="col-xs-1">Urun Ismi</th>
+                        <th class="col-xs-1">Uretici Ismi</th>
+                        <th class="col-xs-1">Birim Miktari</th>
+                        <th class="col-xs-1">Stok Miktari</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="p in data.productList | filter:searchText" ng-class-odd="'alt'">
+                        <td class="col-xs-1">
+                            <input type="radio" ng-model="$parent.data.selectedRadio" name="name" ng-value="p" ng-change="$parent.radioProductSelected(p)">
+                        </td>
+                        <td class="col-xs-1">{{p.id}}</td>
+                        <td class="col-xs-1">{{p.productName}}</td>
+                        <td class="col-xs-1">{{p.producer.producerName}}</td>
+                        <td class="col-xs-1">{{p.unit}} {{p.unitType.unitName}}</td>
+                        <td class="col-xs-1">{{p.unitAmount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-3">
+                <div>
+                    <div ng-show="data.sellValidation" class="alert alert-danger">{{data.errorMsg}}</div>
+                    <label for="sellAmount">Miktar*</label>
+                    <input type="number" name="sellAmount" id="sellAmount" class="form-control" ng-model="sellAmount" required />
+                    <span ng-show="form.sellAmount.$dirty && form.sellAmount.$error.required" class="help-block">Miktari Girmeniz Gerekmektedir</span>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary" ng-click = "addToList(sellAmount)">Secili Urunu Listeye Ekle</button>
+                <button type="button" class="btn btn-primary" ng-click = "removeElement()">Secili Urunu Listeden Kaldir</button>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-sm-9">
+            <table class=" table table-response" style="background: #feffff">
+                <thead>
+                <tr>
+                    <th class="col-xs-1">Sec</th>
+                    <th class="col-xs-1">Id</th>
+                    <th class="col-xs-1">Urun Ismi</th>
+                    <th class="col-xs-1">Adet Miktari</th>
+                    <th class="col-xs-1">Ucreti</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sp in data.soldProductList" ng-class-odd="'alt'">
+                    <th class="col-xs-1">
+                        <input type="radio" ng-model="$parent.data.selectedRadio" name="name" ng-value="sp" ng-change="$parent.radioProductSelected(sp)">
+                    </th>
+                    <td class="col-xs-1">{{sp.product.id}}</td>
+                    <td class="col-xs-1">{{sp.product.productName}}</td>
+                    <td class="col-xs-1">{{sp.soldAmount}}</td>
+                    <th class="col-xs-1">{{sp.soldPrice}}</th>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="col-sm-5">
+                <br>
+                <table class=" table table-response" style="background: #feffff">
+                    <tr>
+                        <td class="col-xs-1">Toplam</td>
+                        <td class="col-xs-1">{{data.sumAmount}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-3">
+                <label for="memberId">Alici Uye Id'si</label>
+                <input type="number" name="memberId" id="memberId" class="form-control" ng-model="memberId"/>
+            </div>
+            <div class="col-sm-3">
+                <label>Dogrula</label>
+                <br>
+                <button type="button" class="btn btn-primary" ng-disabled="!memberId" ng-click = "verifyMember(memberId)">Dogrula</button>
+            </div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" ng-click = "completeSession()">Tamamla</button>
+        <button type="button" class="btn btn-primary" ng-click = "">Iptal Et</button>
+    </form>
+
+</div>
