@@ -37,7 +37,7 @@ public class Member {
     private String phone;
 
     @Column(nullable = false)
-    private Boolean membership;
+    private Boolean membership ;
 
     @OneToMany(mappedBy = "member")
     private List<SoldProduct> soldProductList;

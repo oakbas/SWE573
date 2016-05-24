@@ -27,6 +27,7 @@ public class MemberController {
 
     @RequestMapping(value = "/addMember", method = RequestMethod.POST)
     public void saveMember(@Valid @RequestBody Member member) {
+        member.setMembership(false);
         memberService.saveMember(member);
     }
 

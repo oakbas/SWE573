@@ -46,8 +46,6 @@ INSERT INTO ROLE (role_name) VALUES ('admin');
 
 INSERT INTO ROLE (role_name) VALUES ('member');
 
-INSERT INTO ROLE (role_name) VALUES ('nonmember');
-
 INSERT INTO MEMBER (firstname,surname, email, bio, phone, membership, username, password, role_id) VALUES ('admin','admin', 'deneme', 'admin', '05xx', false, 'admin', '123456', 1);
 
 INSERT INTO MEMBER (firstname,surname, email, bio, phone, membership, username, password, role_id) VALUES ('veli','demir', 'mail', 'boun ogretmen', '05xx', false, 'vdemir', '123456', 2);
