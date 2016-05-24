@@ -102,7 +102,7 @@ angular.module('BasicHttpAuth', [
 
 
             // Local IP
-            $rootScope.serverURL = "http://192.168.1.23:8080/";
+            $rootScope.serverURL = "http://192.168.1.24:8080/";
 
 
             // keep user logged in after page refresh
