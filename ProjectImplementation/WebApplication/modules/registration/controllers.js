@@ -9,6 +9,9 @@ angular.module('Registration')
     .controller('RegistrationController',
         ['$scope', 'RegistrationService',
             function ($scope, RegistrationService) {
+
+                $scope.data = {registrationValid : false}
+
                 $scope.submit = function () {
                     $scope.dataLoading = true;
                     var memberData =  {
@@ -23,8 +26,9 @@ angular.module('Registration')
                                   }
                     RegistrationService.submit(memberData, function (response) {
                         if(response.status == '200') {
-                            console.log("successful");
                             $scope.dataLoading = false;
+                            $scope.data.errorMsg = "Uyelik bilgileriniz eklendi. Uyeliginizin tamamlanmasi icin ucretini de odemelisin";
+                            $scope.data.registrationValid = true;
                         }
                         else{
                             console.log("something is wrong");

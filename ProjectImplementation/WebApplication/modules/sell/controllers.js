@@ -22,6 +22,7 @@ angular.module('Sell')
                                 verified: false,
                                 producerList: [],
                                 sellValidation:false,
+                                verifiedMember: null,
                 }
 
                 $scope.init = function() {
@@ -98,10 +99,11 @@ angular.module('Sell')
                             if (response.data != "") {
                                 $scope.data.sumAmount -= ($scope.data.sumAmount * $scope.data.discount);
                                 $scope.data.verified = true;
+                                $scope.data.verifiedMember = memberId;
+                                window.alert("Uye dogrulandi, indirim uygulandi");
                             }
                             else {
-                                console.log('dogrulanamadi');
-
+                                window.alert("Uye dogrulanamadi");
                             }
                         }
                     });
@@ -114,7 +116,7 @@ angular.module('Sell')
                                             soldPrice: $scope.data.soldProductList[i].soldPrice,
                                             soldAmount: $scope.data.soldProductList[i].soldAmount,
                                             soldDate: '2016-06-06',
-                                            member: {id: 1}}
+                                            member: {id: $scope.data.verifiedMember}}
                         }
                         else{
                             soldData = {product: $scope.data.soldProductList[i].product,
@@ -126,6 +128,7 @@ angular.module('Sell')
                             if(response.status == '200') {
                                 soldData.product.unitAmount = soldData.product.unitAmount - soldData.soldAmount;
                                 $scope.updateStock(soldData.product);
+                                window.alert("Satis tamamlandi eklendi");
                             }
                         });
                     }
@@ -136,7 +139,6 @@ angular.module('Sell')
                 $scope.updateStock = function(productData){
                     SellService.updateStock(productData, function(response){
                         if(response.status == '200') {
-                            console.log('guncellendi');
                         }
                     });
                 }

@@ -121,9 +121,8 @@ angular.module('Stock', ['ui.bootstrap', 'ngFileUpload'])
                         }
                         StockService.saveProduct(productData, function (response) {
                             if(response.status == '200') {
-                                console.log("successful");
                                 $scope.dataLoading = false;
-
+                                window.alert("Urun Eklendi");
                             }
                             else{
                                 console.log("something is wrong");
